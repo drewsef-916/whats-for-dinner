@@ -1,6 +1,6 @@
 <template>
   <div>
-    <headerComponent />
+    <headerComponent ref="headerComp"/>
     <nuxt />
   </div>
 </template>
@@ -11,12 +11,20 @@ import headerComponent from '~/components/headerComponent.vue'
 export default {
   components: {
     headerComponent
-  }
+  },
+  // mounted: function() {
+  //   const header = this.$refs.headerComp;
+  //   console.log(header);
+  // }
 }
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Titan+One|Varela&display=swap');
+
+body {
+  margin: 0;
+}
 
 html {
   box-sizing: border-box;
@@ -25,6 +33,14 @@ html {
 
 h1 {
   font-family: 'Titan One', cursive;
+}
+
+ul {
+  list-style: none;
+}
+
+.recipe-container:first-of-type {
+  margin-top: 15vh;
 }
 
 </style>

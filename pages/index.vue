@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <h1 class="page-title">All Recipes</h1>
-    <main>
+  <div class="page-wrapper">
+    <!-- <h1 class="page-title">All Recipes</h1> -->
+    <main class="recipe-container">
         <div class="recipe" v-for="recipe in recipes" v-bind:key="recipe.id">
           <h3>{{recipe.name}}</h3>
           <ul class="ingredients">
@@ -47,15 +47,39 @@ export default {
 
 <style>
 
+.page-wrapper {
+  background: url(../assets/bg.svg);
+  background-attachment: fixed;
+}
+
+h1:only-of-type {
+  margin-top: 0;
+  padding-top: 20px;
+}
+
+.recipe-container {
+  display: grid;
+  justify-content: center;
+}
+
 .recipe {
   display: grid;
   justify-items: center;
-
+  width: 80vw;
+  margin: 20px 0;
+  border: 2px solid black;
+  border-radius: 10px;
+  background: white;
 }
 
 .directions {
   text-align: center;
+  padding: 0;
+}
 
+.ingredients {
+  text-align: center;
+  padding: 0;
 }
 
 .page-title {
