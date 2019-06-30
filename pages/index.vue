@@ -3,7 +3,9 @@
     <!-- <h1 class="page-title">All Recipes</h1> -->
     <main class="recipe-container">
         <div class="recipe" v-for="recipe in recipes" v-bind:key="recipe.id">
+          <nuxt-link to="/{{recipe.id}}">
           <h3>{{recipe.name}}</h3>
+          </nuxt-link>        
           <ul class="ingredients">
             <h5>Ingredients</h5>
             <li v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.index">
