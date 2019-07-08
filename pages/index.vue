@@ -6,6 +6,7 @@
           <nuxt-link :to="{name: 'recipes-id', params: {id: recipe.id}}">
             <h3>{{recipe.name}}</h3>
           </nuxt-link>
+
           <ul class="ingredients">
             <h5>Ingredients</h5>
             <li v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.index">
