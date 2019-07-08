@@ -1,8 +1,5 @@
 <template>
     <div class="header-container">
-        <div class="toggle-background">
-            <span class="arrow"></span>
-        </div>
         <div>
             <fa icon="search" class="icon has-menu" @click="showMenu()"/>
             <div class="search-menu menu-toggle">
@@ -34,6 +31,9 @@
                 <fa icon="plus" class="icon"/>
             </nuxt-link>
         </div>
+        <!-- <div class="toggle-background">
+            <span class="arrow"></span>
+        </div> -->
     </div>
 </template>
 

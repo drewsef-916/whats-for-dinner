@@ -3,7 +3,9 @@
     <!-- <h1 class="page-title">All Recipes</h1> -->
     <main class="recipe-container">
         <div class="recipe" v-for="recipe in recipes" v-bind:key="recipe.id">
-          <h3>{{recipe.name}}</h3>
+          <nuxt-link :to="{name: 'recipes-id', params: {id: recipe.id}}">
+            <h3>{{recipe.name}}</h3>
+          </nuxt-link>
           <ul class="ingredients">
             <h5>Ingredients</h5>
             <li v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.index">
@@ -35,7 +37,7 @@ export default {
     }
   },
   created: function() {
-    axios.get(`${process.env.baseUrl}/api/recipes`)
+    this.$axios.get(`/api/recipes`)
     .then(res => {
       this.recipes = res.data
       })
