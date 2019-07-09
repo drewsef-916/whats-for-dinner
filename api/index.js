@@ -12,8 +12,8 @@ app.get('/recipes', async (req, res, next) => {
     try {
         const recipes = await axios.get(`https://api.mlab.com/api/1/databases/wfddev/collections/recipes?apiKey=${process.env.MLAB_SECRET}`)
         res.send(JSON.stringify(recipes.data));
-    } catch {
-        e => console.log(e);
+    } catch(error) {
+        console.log(error);
     } 
 })
 

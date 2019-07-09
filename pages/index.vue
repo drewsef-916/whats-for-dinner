@@ -51,7 +51,7 @@ export default {
 <style>
 
 .page-wrapper {
-  background: url(../assets/bg.svg);
+  background: url(../assets/bg.png);
   background-attachment: fixed;
 }
 
