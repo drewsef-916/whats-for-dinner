@@ -12,9 +12,11 @@
 
 <script>
 export default {
+  props: ['recipeList'],
   methods: {
     navMenu: function() {
       alert('this is the nav button');
+      console.log(this);
     }
   }
 }
@@ -27,7 +29,7 @@ export default {
   .icon {
         font-size: 1.5rem;
         color: black;
-    }
+  }
 </style>
 
 

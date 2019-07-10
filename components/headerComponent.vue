@@ -1,11 +1,11 @@
 <template>
     <div class="header-container">
-        <navSearch />
-        <navSort />
+        <navSearch :recipeList="this.recipes"/>
+        <navSort :recipeList="this.recipes"/>
         <nuxt-link to="/">
             <img class="logo" src="~/assets/wfd-logo.png"/>
         </nuxt-link>
-        <navCalendar />
+        <navCalendar :recipeList="this.recipes"/>
         <div>
             <nuxt-link to="/newRecipe">
                 <fa icon="plus" class="icon"/>
