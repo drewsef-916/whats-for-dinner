@@ -28,8 +28,17 @@ export default {
         navSearch,
         navCalendar
     },
-    methods: {
-       
+    data: function() {
+        return {
+            recipes: [],
+        }
+    },
+    created() {
+        this.$axios.get(`/api/recipes`)
+        .then(res => {
+            this.recipes = res.data
+        })
+        .catch(err => console.log(err))
     }
 }
 </script>

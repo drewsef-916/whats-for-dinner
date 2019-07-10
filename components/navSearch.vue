@@ -12,6 +12,7 @@ export default {
   methods: {
     navMenu: function() {
       alert('this is the search button');
+      console.log(this);
     }
   }
 }
