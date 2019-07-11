@@ -59,7 +59,7 @@ export default {
     }
 
     .logo {
-        max-height: 15vh;
+        max-height: 12vh;
     }
     
 </style>

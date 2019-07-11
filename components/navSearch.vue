@@ -5,7 +5,7 @@
         <input type="text" placeholder="Find a recipe">
     </div>
     <aside class="searchbox">
-      <input type="text" placeholder="find a recipe...">
+      <input type="text" placeholder="find a recipe..." @keyup="findMatches">
       <fa icon="times-circle" class="icon close" @click="buttonClose"/>
     </aside>
   </div>
@@ -21,6 +21,12 @@ export default {
     },
     buttonClose: function() {
       this.$el.lastChild.style.display = "none";
+    },
+    findMatches: function() {
+      let matchWord = this.$el.lastChild.firstChild.value;
+      const recipes = this.$props.recipeList;
+      const regex = new RegExp(matchWord, 'gi');
+      
     }
   }
 }
@@ -37,21 +43,28 @@ export default {
   .searchbox {
     display: none;
     position: absolute;
-    background: #F1B4B4;
+    top: 26vh;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 10vh;
+    width: 350px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 5px;
     grid-template-columns: 5fr 1fr;
     align-items: center;
-    top: 15vh;
-    left: 35vw;
-    min-height: 15vh;
-    width: 30vw;
     font-size: 3rem;
   }
   .searchbox input {
     height: 3rem;
     font-size: 2rem;
+    overflow: hidden;
   }
   .searchbox .close {
     width: 50%;
     margin: 0 auto;
+    color: slategrey;
   }
 </style>
