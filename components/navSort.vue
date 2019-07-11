@@ -15,7 +15,6 @@ export default {
   props: ['recipeList'],
   methods: {
     navMenu: function() {
-      alert('this is the nav button');
       console.log(this);
     }
   }
