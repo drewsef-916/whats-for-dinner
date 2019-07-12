@@ -9,12 +9,14 @@
 
           <ul class="ingredients">
             <h5>Ingredients</h5>
+            <hr>
             <li v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.index">
               {{ingredient}}
             </li>
           </ul>
           <ul class="directions">
             <h5>Directions</h5>
+            <hr>
             <li v-for="direction in recipe.directions" v-bind:key="direction.index">
               {{direction}}
             </li>
@@ -50,14 +52,17 @@ export default {
 
 <style>
 
+hr {
+  width: 10rem;
+}
+
+h5 {
+  margin-bottom: 5px;
+}
+
 .page-wrapper {
   background: url(../assets/bg.png);
   background-attachment: fixed;
-}
-
-h1:only-of-type {
-  margin-top: 0;
-  padding-top: 20px;
 }
 
 .recipe-container {

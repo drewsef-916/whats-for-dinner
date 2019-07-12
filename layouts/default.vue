@@ -31,8 +31,15 @@ html {
   font-family: 'Varela', sans-serif;
 }
 
-h1 {
+h3 {
   font-family: 'Titan One', cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #777;
+}
+
+a {
+  text-decoration: none;
 }
 
 ul {

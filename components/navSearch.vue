@@ -31,6 +31,7 @@ export default {
         const regex = new RegExp(matchWord, 'gi');
         return recipe.name.match(regex)
       })
+      if (!matchWord.length) filteredList = [];
       const html = filteredList.map(recipe => {
         return `
         <a href="/recipes/${recipe.id}">
