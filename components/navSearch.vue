@@ -33,9 +33,9 @@ export default {
       })
       const html = filteredList.map(recipe => {
         return `
-        <nuxt-link :to="{name: 'recipes-id', params: {id: ${recipe.id}}}">
+        <a href="/recipes/${recipe.id}">
             <li>${recipe.name}</li>
-        </nuxt-link>
+        </a>
         `
       }).join('')
       suggestions.innerHTML = html;
@@ -89,5 +89,8 @@ export default {
     color: #494747;
     background-color: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid black;
+  }
+  .recipe-matches a {
+    text-decoration: none;
   }
 </style>
