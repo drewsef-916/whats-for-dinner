@@ -1,11 +1,23 @@
 <template>
-    <div>
-        <h1>Add a new recipe!</h1>
-        <form @submit="onSubmit(recipeName)">
-            <input v-model="name" placeholder="Name"/>
-            <!-- <input v-model="recipeIngredients" placeholder="Ingredients"/>
-            <input v-model="recipeDirections" placeholder="Directions"/> -->
-        </form>
+    <div class="page-wrapper">
+        <main class="new-recipe">
+            <h1>Add a new recipe!</h1>
+            <form class="content" action="" method="post">
+               <label for="name">
+                   Recipe Name:
+               </label>
+               <input name="name" id="name" type="text">
+               <label for="ingredients">
+                   Ingredients:
+               </label>
+               <input name="ingredients" type="text">
+               <label for="directions">
+                   Directions:
+               </label>
+               <input name="directions" type="text">
+               <button type="submit">Add Recipe</button>
+            </form>
+        </main>
     </div>
 </template>
 
@@ -29,6 +41,24 @@ export default {
 }
 </script>
 
-<style>
-    
+<style scoped>
+    input {
+        margin-bottom: 10px;
+    }
+    .page-wrapper {
+        background: url(../assets/bg.png);
+        background-attachment: fixed;
+        height: 85vh;
+        margin-top: 15vh;
+    }
+    .new-recipe {
+        display: grid;
+        justify-content: center;
+        justify-items: center;
+        width: 80vw;
+        margin: 30px auto;
+        border: 2px solid black;
+        border-radius: 10px;
+        background: white;
+    }
 </style>

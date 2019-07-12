@@ -5,13 +5,15 @@
           <h3>{{recipe.name}}</h3>
           <ul class="ingredients">
             <h5>Ingredients</h5>
+            <hr>
             <li v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.index">
               {{ingredient}}
             </li>
           </ul>
           <ul class="directions">
             <h5>Directions</h5>
-            <li v-for="direction in recipe.directions" v-bind:key="direction.index">
+            <hr>
+            <li v-for="(direction, index) in recipe.directions" v-bind:key="direction.index" @click="crossItOut(index)">
               {{direction}}
             </li>
           </ul>
@@ -39,20 +41,32 @@ export default {
     })
     .catch(err => console.log(err))
   },
+  methods: {
+    crossItOut: function(index) {
+      const direction = this.$el.firstChild.firstChild.lastChild.children[index + 2];
+      direction.style.textDecoration === "line-through" ? 
+      direction.style.textDecoration = "none" :
+      direction.style.textDecoration = "line-through";
+    }
+  }
 
 }
 </script>
 
 <style>
-  .page-wrapper {
-    background: url(../../assets/bg.png);
-    background-attachment: fixed;
-    min-height: 85vh;
-  }
-
   h1:only-of-type {
     margin-top: 0;
     padding-top: 20px;
+  }
+  hr {
+    width: 10rem;
+  }
+  li {
+    padding: 10px 0;
+  }
+  .page-wrapper {
+    background: url(../../assets/bg.png);
+    background-attachment: fixed;
   }
 
   .recipe-container {
