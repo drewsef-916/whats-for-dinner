@@ -13,12 +13,12 @@
           <ul class="directions">
             <h5>Directions</h5>
             <hr>
-            <li v-for="(direction, index) in recipe.directions" v-bind:key="direction.index" @click="crossItOut(index)">
+            <li v-for="(direction, index) in recipe.directions" v-bind:key="direction.index" @click="crossItOut(index)" ref="direction">
               {{direction}}
             </li>
           </ul>
-          <!-- <p>{{recipe.ingredients}}</p>
-          <p>{{recipe.directions}}</p> -->
+        <p>Last Eaten: {{toHumanDate(recipe.lastEaten)}}</p>
+        <button class="log-date" @click="logDate">I made this today!</button>
         </div>
     </main>
     </div>
@@ -43,10 +43,23 @@ export default {
   },
   methods: {
     crossItOut: function(index) {
-      const direction = this.$el.firstChild.firstChild.lastChild.children[index + 2];
+      const refDirection = this.$refs;
+      const direction = this.$refs.direction[index];
       direction.style.textDecoration === "line-through" ? 
       direction.style.textDecoration = "none" :
       direction.style.textDecoration = "line-through";
+    },
+    logDate: function() {
+      const jsonToday = new Date().toJSON();
+      console.log(jsonToday);
+    },
+    toHumanDate: function(date) {
+      try {
+        return new Date(date).toLocaleDateString();
+      } catch(err) {
+        console.warn(err);
+        return '???';
+      }
     }
   }
 
@@ -96,5 +109,15 @@ export default {
 
   .page-title {
     text-align: center;
+  }
+
+  .log-date {
+    border: 1px solid black;
+    background-color: #E47373;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    width: 50%;
+    height: 2.5rem;
+    font-size: 1rem;
   }
 </style>
