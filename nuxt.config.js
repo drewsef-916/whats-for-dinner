@@ -5,7 +5,7 @@ require('dotenv').config()
 module.exports = {
 
   env: {
-    baseUrl: process.env.API_URL || 'http://localhost:3000',
+    // baseUrl: process.env.API_URL || 'http://localhost:3000',
   },
 
   mode: 'universal',
@@ -72,6 +72,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseUrl: process.env.API_URL || 'http://localhost:3000'
   },
 
   /*
