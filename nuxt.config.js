@@ -1,6 +1,7 @@
 const pkg = require('./package')
 require('dotenv').config()
 
+const prod = process.env.NODE_ENV === 'production'; 
 
 module.exports = {
 
@@ -72,7 +73,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseUrl: process.env.API_URL || 'http://localhost:3000'
+    baseURL: prod ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000'
   },
 
   /*

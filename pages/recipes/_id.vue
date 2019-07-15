@@ -35,7 +35,7 @@ export default {
     }
   },
   created: function() {
-    this.$axios.get(`/api/recipes`)
+    this.axios.get(`/api/recipes`)
     .then(res => {
       this.recipe = res.data.find(recipe => recipe.id === this.$route.params.id)
     })
