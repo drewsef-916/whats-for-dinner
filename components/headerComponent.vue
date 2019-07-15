@@ -34,6 +34,7 @@ export default {
         }
     },
     created() {
+        console.log(this.$axios.defaults);
         this.$axios.get(`/api/recipes`)
         .then(res => {
             this.recipes = res.data
