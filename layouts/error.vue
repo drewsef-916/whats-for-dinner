@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <h1 v-if="error.statusCode === 404">Page not found</h1>
-    <h1 v-else>An error occurred</h1>
+    <h1 v-if="error.statusCode === 404">Page Not Found</h1>
+    <h1 v-else>Oh no! An error occurred</h1>
     <img class="liam" src="https://wfd-photo-storage.s3.amazonaws.com/liam-oil-paint-smaller.png
     " alt="">
-    <nuxt-link to="/">Home page</nuxt-link>
+    <nuxt-link class="back-home" to="/">Let's Go Home!</nuxt-link>
     <a class="img-credit" href="https://pngtree.com/free-vectors">free vectors from pngtree.com</a>
   </div>
 </template>
@@ -38,5 +38,9 @@ export default {
   }
   .img-credit {
     display: none;
+  }
+  .back-home {
+    font-family: 'Titan One', cursive;
+    font-size: 2rem;
   }
 </style>
