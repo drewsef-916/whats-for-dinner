@@ -25,8 +25,7 @@
 </template>
 
 <script>
-import axios from 'axios'
-
+import masterList from '../../masterRecipeList.json';
 
 export default {
   data: function() {
@@ -35,11 +34,7 @@ export default {
     }
   },
   created: function() {
-    this.axios.get(`/api/recipes`)
-    .then(res => {
-      this.recipe = res.data.find(recipe => recipe.id === this.$route.params.id)
-    })
-    .catch(err => console.log(err))
+    this.recipe = masterList.find(recipe => recipe.id === this.$route.params.id)
   },
   methods: {
     crossItOut: function(index) {
@@ -50,8 +45,16 @@ export default {
       direction.style.textDecoration = "line-through";
     },
     logDate: function() {
+      const currentRecipe = this.recipe;
       const jsonToday = new Date().toJSON();
-      console.log(jsonToday);
+      const justTheDate = jsonToday.slice(0, 10);
+      currentRecipe.lastEaten = justTheDate;
+      currentRecipe.timesEaten++;
+      this.$axios.put(`/api/logMeal/${currentRecipe.id}`, currentRecipe)
+      .then(res => {
+        console.log(res.status)
+      })
+      .catch(err => console.log(err))
     },
     toHumanDate: function(date) {
       try {

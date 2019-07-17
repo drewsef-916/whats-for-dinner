@@ -21,6 +21,7 @@
 import navSort from '~/components/navSort.vue';
 import navSearch from '~/components/navSearch.vue';
 import navCalendar from '~/components/navCalendar.vue';
+import masterList from '../masterRecipeList.json';
 
 export default {
     components: {
@@ -34,12 +35,7 @@ export default {
         }
     },
     created() {
-        console.log(this.$axios.defaults);
-        this.$axios.get(`/api/recipes`)
-        .then(res => {
-            this.recipes = res.data
-        })
-        .catch(err => console.log(err))
+        this.recipes = masterList;
     }
 }
 </script>

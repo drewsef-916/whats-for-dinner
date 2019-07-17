@@ -29,22 +29,17 @@
 </template>
 
 <script>
-import axios from 'axios'
+import masterList from '../masterRecipeList.json';
 
 export default {
   
-
   data: function() {
     return {
       recipes: [],
     }
   },
   created: function() {
-    this.$axios.get(`/api/recipes`)
-    .then(res => {
-      this.recipes = res.data
-      })
-    .catch(err => console.log(err))
+    this.recipes = masterList;
   },
 
 }

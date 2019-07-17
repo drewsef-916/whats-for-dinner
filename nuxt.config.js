@@ -1,7 +1,4 @@
 const pkg = require('./package')
-require('dotenv').config()
-
-const prod = process.env.NODE_ENV === 'production'; 
 
 module.exports = {
 
@@ -73,12 +70,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    proxy: true,
-    baseURL: prod ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000'
-  },
-
-  proxy: {
-    '/api/': { target: 'https://whats-for-dinner.netlify.com', pathRewrite: {'^/api/': ''} }
+    // baseURL: prod ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000'
   },
 
   /*
@@ -91,5 +83,7 @@ module.exports = {
     extend(config, ctx) {
     }
   },
-  serverMiddleware: ['~/api/index.js']
+  // serverMiddleware: [
+  //   {path: '/api', handler: '~/api/index.js'}
+  // ]
 }
