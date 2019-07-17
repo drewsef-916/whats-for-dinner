@@ -1,7 +1,9 @@
 <template>
     <div class="header-container">
         <navSearch :recipeList="this.recipes"/>
-        <navSort :recipeList="this.recipes"/>
+        <nuxt-link to="/about">
+            <navAbout :recipeList="this.recipes"/>
+        </nuxt-link>
         <nuxt-link to="/">
             <img class="logo" src="~/assets/wfd-logo.png"/>
         </nuxt-link>
@@ -18,14 +20,14 @@
 </template>
 
 <script>
-import navSort from '~/components/navSort.vue';
+import navAbout from '~/components/navAbout.vue';
 import navSearch from '~/components/navSearch.vue';
 import navCalendar from '~/components/navCalendar.vue';
 import masterList from '../masterRecipeList.json';
 
 export default {
     components: {
-        navSort,
+        navAbout,
         navSearch,
         navCalendar
     },

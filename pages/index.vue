@@ -21,8 +21,6 @@
               {{direction}}
             </li>
           </ul>
-          <!-- <p>{{recipe.ingredients}}</p>
-          <p>{{recipe.directions}}</p> -->
         </div>
     </main>
   </div>

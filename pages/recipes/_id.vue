@@ -83,6 +83,7 @@ export default {
   .page-wrapper {
     background: url(../../assets/bg.png);
     background-attachment: fixed;
+    min-height: 85vh;
   }
 
   .recipe-container {
