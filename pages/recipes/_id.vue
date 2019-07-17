@@ -50,11 +50,7 @@ export default {
       const justTheDate = jsonToday.slice(0, 10);
       currentRecipe.lastEaten = justTheDate;
       currentRecipe.timesEaten++;
-      this.$axios.put(`/api/logMeal/${currentRecipe.id}`, currentRecipe)
-      .then(res => {
-        console.log(res.status)
-      })
-      .catch(err => console.log(err))
+      
     },
     toHumanDate: function(date) {
       try {
