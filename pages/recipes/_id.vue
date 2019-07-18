@@ -25,21 +25,18 @@
 </template>
 
 <script>
-import axios from 'axios'
-
+import masterRecipeList from '../../masterRecipeList.json';
 
 export default {
   data: function() {
     return {
-        recipe: {}
+        recipe: {},
     }
   },
   created: function() {
-    this.axios.get(`/api/recipes`)
-    .then(res => {
-      this.recipe = res.data.find(recipe => recipe.id === this.$route.params.id)
+    this.recipe = masterRecipeList.find(recipe => {
+      return recipe.id === this.$route.params.id 
     })
-    .catch(err => console.log(err))
   },
   methods: {
     crossItOut: function(index) {
@@ -50,8 +47,13 @@ export default {
       direction.style.textDecoration = "line-through";
     },
     logDate: function() {
+      console.log(masterRecipeList);
+      const currentRecipe = this.recipe;
       const jsonToday = new Date().toJSON();
-      console.log(jsonToday);
+      const justTheDate = jsonToday.slice(0, 10);
+      currentRecipe.lastEaten = justTheDate;
+      currentRecipe.timesEaten++;
+      masterRecipeList.filter(item => item.id !== currentRecipe.id).push(currentRecipe);
     },
     toHumanDate: function(date) {
       try {
@@ -80,6 +82,7 @@ export default {
   .page-wrapper {
     background: url(../../assets/bg.png);
     background-attachment: fixed;
+    min-height: 85vh;
   }
 
   .recipe-container {

@@ -1,11 +1,13 @@
 <template>
   <div class="container">
-    <h1 v-if="error.statusCode === 404">Page not found</h1>
-    <h1 v-else>An error occurred</h1>
-    <img class="liam" src="https://wfd-photo-storage.s3.amazonaws.com/liam-oil-paint-smaller.png
-    " alt="">
-    <nuxt-link to="/">Home page</nuxt-link>
-    <a class="img-credit" href="https://pngtree.com/free-vectors">free vectors from pngtree.com</a>
+    <main class="error-nf" v-if="error.statusCode === 404">
+      <h1 class="error-text">4</h1>
+      <img class="liam" src="https://wfd-photo-storage.s3.amazonaws.com/liam-oil-paint-smaller.png
+      " alt="">
+      <h1 class="error-text">4</h1>
+    </main>
+    <h1 v-else>Oh no! An error occurred</h1>
+    <nuxt-link class="back-home" to="/">Back to Homepage</nuxt-link>
   </div>
 </template>
 
@@ -31,12 +33,25 @@ export default {
       text-align: center;
       margin-top: 15vh;
   }
+  .error-nf {
+    margin-top: 2vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
   .liam {
-    max-width: 80vw;
+    max-width: 30vw;
     opacity: 0;
     animation: fade-in ease 2.0s forwards;
+    clip-path: circle();
   }
-  .img-credit {
-    display: none;
+  .back-home {
+    font-family: 'Titan One', cursive;
+    font-size: 1rem;
+  }
+  .error-text {
+    margin: 0;
+    font-family: cursive;
+    font-size: 9rem;
   }
 </style>

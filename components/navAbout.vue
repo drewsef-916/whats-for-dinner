@@ -1,6 +1,6 @@
 <template>  
   <div>
-    <fa icon="sort" class="icon has-menu" @click="navMenu"/>
+    <fa icon="question" class="icon has-menu" @click="navMenu"/>
     <div class="sort-menu menu-toggle">
         <p>Sort option 1</p>
         <p>Sort option 2</p>
