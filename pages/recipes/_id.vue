@@ -25,16 +25,18 @@
 </template>
 
 <script>
-import masterList from '../../masterRecipeList.json';
+import backupList from '../../backupList.json';
 
 export default {
   data: function() {
     return {
-        recipe: {}
+        recipe: {},
     }
   },
   created: function() {
-    this.recipe = masterList.find(recipe => recipe.id === this.$route.params.id)
+    this.recipe = backupList.find(recipe => {
+      return recipe.id === this.$route.params.id 
+    })
   },
   methods: {
     crossItOut: function(index) {
@@ -45,12 +47,13 @@ export default {
       direction.style.textDecoration = "line-through";
     },
     logDate: function() {
+      console.log(backupList);
       const currentRecipe = this.recipe;
       const jsonToday = new Date().toJSON();
       const justTheDate = jsonToday.slice(0, 10);
       currentRecipe.lastEaten = justTheDate;
       currentRecipe.timesEaten++;
-      
+      backupList.filter(item => item.id !== currentRecipe.id).push(currentRecipe);
     },
     toHumanDate: function(date) {
       try {

@@ -37,6 +37,7 @@ export default {
     }
   },
   created: function() {
+    console.log(masterList);
     this.recipes = masterList;
   },
 
