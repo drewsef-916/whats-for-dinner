@@ -30,8 +30,6 @@
                 had that recipe. This helps you search for meals by date eaten (calendar icon) later.
             </li>
         </ul>
-        <h5>This site is really fast!</h5>
-        <p>That wasn't a question, but thanks!</p>
     </div>
 </template>
 
@@ -48,5 +46,10 @@ export default {
     li {
         margin-bottom: 1rem;
     }
-
+    h5:nth-of-type(odd) {
+        background-image: linear-gradient(45deg, white, #E47373);
+    }
+    h5:nth-of-type(even) {
+        background-image: linear-gradient(45deg, #E47373, white);
+    }
 </style>

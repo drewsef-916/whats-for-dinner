@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import backupList from '../../backupList.json';
+import masterRecipeList from '../../masterRecipeList.json';
 
 export default {
   data: function() {
@@ -34,7 +34,7 @@ export default {
     }
   },
   created: function() {
-    this.recipe = backupList.find(recipe => {
+    this.recipe = masterRecipeList.find(recipe => {
       return recipe.id === this.$route.params.id 
     })
   },
@@ -47,13 +47,13 @@ export default {
       direction.style.textDecoration = "line-through";
     },
     logDate: function() {
-      console.log(backupList);
+      console.log(masterRecipeList);
       const currentRecipe = this.recipe;
       const jsonToday = new Date().toJSON();
       const justTheDate = jsonToday.slice(0, 10);
       currentRecipe.lastEaten = justTheDate;
       currentRecipe.timesEaten++;
-      backupList.filter(item => item.id !== currentRecipe.id).push(currentRecipe);
+      masterRecipeList.filter(item => item.id !== currentRecipe.id).push(currentRecipe);
     },
     toHumanDate: function(date) {
       try {

@@ -83,6 +83,14 @@ module.exports = {
     extend(config, ctx) {
     }
   },
+  generate: {
+    routes: function() {
+      import masterList from './masterRecipeList.json';
+      return masterList.map(recipe => {
+        return '/recipes/' + recipe.id
+      })
+    }
+  }
   // serverMiddleware: [
   //   {path: '/api', handler: '~/api/index.js'}
   // ]
