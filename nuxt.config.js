@@ -1,4 +1,5 @@
-const pkg = require('./package')
+const pkg = require('./package');
+const masterList = require('./masterRecipeList.json');
 
 module.exports = {
 
@@ -85,7 +86,6 @@ module.exports = {
   },
   generate: {
     routes: function() {
-      import masterList from './masterRecipeList.json';
       return masterList.map(recipe => {
         return '/recipes/' + recipe.id
       })
