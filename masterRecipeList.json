@@ -213,5 +213,121 @@
   ],
   "lastEaten": "2019-05-01",
   "timesEaten": 0
+  },
+  {
+  "id": "chickenramenstirfry",
+  "name": "Chicken Ramen Stir Fry",
+  "ingredients": [
+  "3 packs ramen noodles",
+  "2 tbsp unsalted butter",
+  "2 chicken breasts cut into chunks",
+  "1/2 tsp pepper to taste",
+  "1 red bell pepper sliced",
+  "4 cloves garlic minced",
+  "2 cups napa cabbage shredded",
+  "1/2 cup green onion sliced",
+  "sesame seeds (optional garnish)",
+  "For Sauce",
+  "1/4 cup soy sauce",
+  "1 tsp sesame oil",
+  "2 tbsp oyster sauce",
+  "1 tbsp honey",
+  "2 tbsp sriracha (for spicy version)"
+  ],
+  "directions": [
+  "Cook the ramen according to package instructions. Reserve 1 cup of water from the pot.",
+  "Combine the sauce ingredients in a small bowl. Whisk well.",
+  "Cook the chicken. Melt butter in a large skillet over medium heat before adding sliced chicken. Season with pepper and cook until browned.",
+  "Add sliced bell pepper and cook for 2-3 minutes before adding garlic and cooking until aromatic. Stir in shredded cabbage and cook until wilted and browned, typically another 2 minutes.",
+  "Add in ramen noodles and prepared sauce. You can pour in some of the water set aside from the noodles to make sure sauce combines well. Add green onion, cook for one more minute, and top with sesame seeds."
+  ],
+  "lastEaten": "2019-07-12",
+  "timesEaten": 1
+  },
+  {
+  "id": "grilledchickenstreettacos",
+  "name": "Grilled Chicken Street Tacos",
+  "ingredients": [
+  "1 1/2 lbs trimmed boneless skinless chicken thighs",
+  "1/4 cup fresh lime juice",
+  "1/4 cup olive oil",
+  "3 cloves garlic, peeled and smashed",
+  "2 tsp ground cumin",
+  "1 1/4 tsp ancho chili powder",
+  "1/4 cup chopped fresh cilantro",
+  "salt and pepper to taste",
+  "For Serving",
+  "tortillas or taco shells",
+  "serving options include avocado/guacamole, cotija cheese, lime wedges, chopped cilantro, 1 small red or yellow onion, avocado crema (see avocado crema recipe)"
+  ],
+  "directions": [
+  "Add chicken to a gallon size bag. Whisk together lime juice, olive oil, garlic, cumin, chili powder, cilantro, 1 tsp salt and 1 tsp pepper",
+  "Pour mixture in the bag and let marinate at least 1 hour, or overnight",
+  "Grill chicken over medium high heat (425-450 degrees), 6 minutes per side",
+  "Dice chicken into cubes and serve with any of the options above"
+  ],
+  "lastEaten": "2019-04-15",
+  "timesEaten": 0
+  },
+  {
+  "id": "avocadocrema",
+  "name": "Avocado Crema (for tacos)",
+  "ingredients": [
+  "1/2 large, ripe avocado",
+  "1 cup Greek yogurt",
+  "2 cloves garlic",
+  "1/2 cup fresh cilantro",
+  "2 limes (juice only)",
+  "3/4 cup water",
+  "salt and pepper to taste"
+  ],
+  "directions": [
+  "Place all ingredients in a blender and blend until smooth",
+  "Season to taste with more salt and/or pepper. Add more water to thin it out if desired"
+  ],
+  "lastEaten": "2019-04-15",
+  "timesEaten": 0
+  },
+  {
+  "id": "avocadocrema",
+  "name": "Avocado Crema (for tacos)",
+  "ingredients": [
+  "1/2 large, ripe avocado",
+  "1 cup Greek yogurt",
+  "2 cloves garlic",
+  "1/2 cup fresh cilantro",
+  "2 limes (juice only)",
+  "3/4 cup water",
+  "salt and pepper to taste"
+  ],
+  "directions": [
+  "Place all ingredients in a blender and blend until smooth",
+  "Season to taste with more salt and/or pepper. Add more water to thin it out if desired"
+  ],
+  "lastEaten": "2019-04-15",
+  "timesEaten": 0
+  },
+  {
+  "id": "stuffedchickenbreastwithcreamyspinach",
+  "name": "Stuffed Chicken Breast With Creamy Spinach",
+  "ingredients": [
+  "1 1/2 lbs thin-sliced chicken breasts",
+  "1 tbsp extra virgin olive oil",
+  "1 1/2 tbsp minced garlic",
+  "1/2 cup chopped onion",
+  "1 1/4 cups chopped raw spinach",
+  "5 oz Greek cream cheese or goat cheese",
+  "2 tsp ground cumin",
+  "2 tbsp fresh dill",
+  "salt and pepper to taste"
+  ],
+  "directions": [
+  "Preheat oven to 410 degrees",
+  "In a bowl, mix together all ingredients except chicken",
+  "Place a few tablespoons of the spinach mixture on a chicken breast and roll the chicken breast around it. Spray top of chicken breast with cooking spray. Optionally, sprinkle with salt and pepper.",
+  "Bake for 22-25 minutes, and broil for the last 2 minutes to help brown the top of the chicken"
+  ],
+  "lastEaten": "2019-04-15",
+  "timesEaten": 0
   }
   ]
