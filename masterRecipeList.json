@@ -289,25 +289,6 @@
   "timesEaten": 0
   },
   {
-  "id": "avocadocrema",
-  "name": "Avocado Crema (for tacos)",
-  "ingredients": [
-  "1/2 large, ripe avocado",
-  "1 cup Greek yogurt",
-  "2 cloves garlic",
-  "1/2 cup fresh cilantro",
-  "2 limes (juice only)",
-  "3/4 cup water",
-  "salt and pepper to taste"
-  ],
-  "directions": [
-  "Place all ingredients in a blender and blend until smooth",
-  "Season to taste with more salt and/or pepper. Add more water to thin it out if desired"
-  ],
-  "lastEaten": "2019-04-15",
-  "timesEaten": 0
-  },
-  {
   "id": "stuffedchickenbreastwithcreamyspinach",
   "name": "Stuffed Chicken Breast With Creamy Spinach",
   "ingredients": [

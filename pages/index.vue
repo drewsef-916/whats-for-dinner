@@ -1,7 +1,7 @@
 <template>
   <div class="page-wrapper">
     <!-- <h1 class="page-title">All Recipes</h1> -->
-    <main class="recipe-container">
+    <main class="recipe-container" @scroll="handleScroll">
         <div class="recipe" v-for="recipe in recipes" v-bind:key="recipe.id">
           <nuxt-link :to="{name: 'recipes-id', params: {id: recipe.id}}">
             <h3>{{recipe.name}}</h3>
@@ -23,6 +23,7 @@
           </ul>
         </div>
     </main>
+      <fa icon="arrow-alt-circle-up" class="scroll-arrow" @click="backToTop"/>
   </div>
 </template>
 
@@ -40,7 +41,14 @@ export default {
     console.log(masterList);
     this.recipes = masterList;
   },
-
+  methods: {
+    handleScroll: function() {
+      console.log(this);
+    },
+    backToTop: function() {
+      console.log('click');
+    }
+  },
 }
 </script>
 
@@ -86,5 +94,14 @@ h5 {
 
 .page-title {
   text-align: center;
+}
+
+.scroll-arrow {
+  display: none;
+  position: fixed;
+  top: calc(100% - 10vh);
+  left: calc(100% - 15vw);
+  color: black;
+  font-size: 3rem;
 }
 </style>

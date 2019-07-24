@@ -90,8 +90,8 @@ module.exports = {
         return '/recipes/' + recipe.id
       })
     }
-  }
-  // serverMiddleware: [
-  //   {path: '/api', handler: '~/api/index.js'}
-  // ]
+  },
+  serverMiddleware: [
+    {path: '/api', handler: '~/api/index.js'}
+  ]
 }
