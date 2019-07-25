@@ -86,15 +86,13 @@ module.exports = {
     }
   },
   generate: {
-    routes: async function() {
-      try {
-        const list = await axios.get('/api/recipes')
-        return list.map(recipe => {
+    routes: function() {
+      return axios.get('/api/recipes')
+      .then(res => {
+        return res.data.map(recipe => {
           return '/recipes/' + recipe.id
         })
-      } catch(err) {
-        console.log(err)
-      }
+      })
     }
   },
   serverMiddleware: [
