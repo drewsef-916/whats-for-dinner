@@ -94,12 +94,19 @@ module.exports = {
   },
   generate: {
     routes: function() {
-      return axios.get(`/api/recipes`)
-      .then(res => {
+      if (prod) {
+        return axios.get(`https://whats-for-dinner.netlify.com/api/recipes`)
+        .then(res => {
         return res.data.map(recipe => {
           return '/recipes/' + recipe.id
         })
       })
+      } else {
+        return axios.get(`http://localhost:3000/api/recipes`)
+        .then(res => {
+        return res.data.map(recipe => {
+          return '/recipes/' + recipe.id
+      }
     }
   },
   serverMiddleware: [
