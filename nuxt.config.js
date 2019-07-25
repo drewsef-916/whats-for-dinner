@@ -1,5 +1,6 @@
 const pkg = require('./package');
-require('dotenv').config()
+import axios from 'axios';
+require('dotenv').config();
 
 
 module.exports = {
