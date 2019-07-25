@@ -79,7 +79,7 @@ module.exports = {
   
   proxy: {
     '/api/': { target: 'https://whats-for-dinner.netlify.com', pathRewrite: {'^/api/': ''} }  
-  }
+  },
 
   /*
   ** Build configuration
