@@ -13,9 +13,6 @@
                 <fa icon="plus" class="icon"/>
             </nuxt-link>
         </div>
-        <!-- <div class="toggle-background">
-            <span class="arrow"></span>
-        </div> -->
     </div>
 </template>
 
@@ -23,7 +20,6 @@
 import navAbout from '~/components/navAbout.vue';
 import navSearch from '~/components/navSearch.vue';
 import navCalendar from '~/components/navCalendar.vue';
-import masterList from '../masterRecipeList.json';
 
 export default {
     components: {
@@ -36,8 +32,9 @@ export default {
             recipes: [],
         }
     },
-    created() {
-        this.recipes = masterList;
+    created: async function() {
+        const list = await this.$axios.$get('/api/recipes')
+        this.recipes = list;
     }
 }
 </script>

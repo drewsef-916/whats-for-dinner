@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import masterList from '../masterRecipeList.json';
+import axios from 'axios'
 
 export default {
   
@@ -37,9 +37,14 @@ export default {
       recipes: [],
     }
   },
-  created: function() {
-    console.log(masterList);
-    this.recipes = masterList;
+  created: async function() {
+    try {
+      const list = await this.$axios.$get('/api/recipes')
+      this.recipes = list;
+
+    } catch(err) {
+      console.log(err)
+    }
   },
   methods: {
     handleScroll: function() {

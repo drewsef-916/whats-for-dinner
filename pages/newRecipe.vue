@@ -43,7 +43,6 @@
 
 <script>
 import axios from 'axios';
-import masterList from '../masterRecipeList.json';
 
 export default {
 
@@ -73,12 +72,11 @@ export default {
             })
             .then(res => {
                 console.log(res);
+                this.$router.push('/');
             })
             .catch(err => {
                 console.error(err);
             })
-            // masterList = this.list;
-            // this.$router.replace({path: '/'});
         },
         addItem(type) {
             if (type === "direction") {

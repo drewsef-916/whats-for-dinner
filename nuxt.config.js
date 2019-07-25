@@ -1,10 +1,11 @@
 const pkg = require('./package');
-const masterList = require('./masterRecipeList.json');
+require('dotenv').config()
+
 
 module.exports = {
 
   env: {
-    // baseUrl: process.env.API_URL || 'http://localhost:3000',
+    baseURL: (process.env.NODE_ENV === 'production' ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000')
   },
 
   mode: 'universal',
