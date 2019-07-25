@@ -86,10 +86,15 @@ module.exports = {
     }
   },
   generate: {
-    routes: function() {
-      return masterList.map(recipe => {
-        return '/recipes/' + recipe.id
-      })
+    routes: async function() {
+      try {
+        const list = await this.$axios.$get('/api/recipes')
+        return list.map(recipe => {
+          return '/recipes/' + recipe.id
+        })
+      } catch(err) {
+        console.log(err)
+      }
     }
   },
   serverMiddleware: [
