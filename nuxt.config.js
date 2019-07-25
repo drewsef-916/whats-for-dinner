@@ -73,8 +73,13 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+     proxy: true,
      baseURL: process.env.NODE_ENV === 'production' ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000'
   },
+  
+  proxy: {
+    '/api/': { target: 'https://whats-for-dinner.netlify.com', pathRewrite: {'^/api/': ''} }  
+  }
 
   /*
   ** Build configuration
