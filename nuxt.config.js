@@ -93,7 +93,7 @@ module.exports = {
   },
   generate: {
     routes: function() {
-      return axios.get(`${process.env.baseURL}/api/recipes`)
+      return axios.get(`/api/recipes`)
       .then(res => {
         return res.data.map(recipe => {
           return '/recipes/' + recipe.id
