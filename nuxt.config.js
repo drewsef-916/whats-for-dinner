@@ -2,6 +2,7 @@ const pkg = require('./package');
 import axios from 'axios';
 require('dotenv').config();
 
+const prod = process.env.NODE_ENV === 'production'; 
 
 module.exports = {
 
@@ -74,7 +75,7 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
      proxy: true,
-     baseURL: process.env.NODE_ENV === 'production' ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000'
+     baseURL: prod ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000'
   },
   
   proxy: {
