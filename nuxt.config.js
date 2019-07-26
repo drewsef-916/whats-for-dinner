@@ -1,8 +1,8 @@
 const pkg = require('./package');
-import axios from 'axios';
+const axios = require('axios');
 require('dotenv').config();
 
-const prod = process.env.NODE_ENV === 'production'
+// if (process.env.NODE_ENV !== 'production') process.env.API_URL === 'http://localhost:3000'
 
 module.exports = {
 
@@ -74,7 +74,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: prod ? process.env.API_URL : 'http://localhost:3000'
+    // baseURL: process.env.API_URL
   },
 
   /*
@@ -89,28 +89,16 @@ module.exports = {
   },
   generate: {
     routes: function () {
-      if (prod) {
-        return axios.get('/recipes')
-        .then((res) => {
-          return res.data.map((recipe) => {
-            return {
-              route: '/recipes/' + recipe.id,
-              payload: recipe
-            }
-          })
+      return axios.get(`/api/recipes`)
+      .then((res) => {
+        return res.data.map((recipe) => {
+          return {
+            route: '/recipes/' + recipe.id,
+            payload: recipe
+          }
         })
-      } 
-      else {
-        return axios.get('http://localhost:3000/api/recipes')
-        .then((res) => {
-          return res.data.map((recipe) => {
-            return {
-              route: '/recipes/' + recipe.id,
-              payload: recipe
-            }
-          })
-        })
-      }
+      })
+      
     }
   },
   serverMiddleware: [
