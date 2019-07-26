@@ -89,8 +89,8 @@ module.exports = {
   },
   generate: {
     routes: function () {
-      if (prod) {
-        return axios.get('https://whats-for-dinner.netlify.com/api/recipes')
+      // if (prod) {
+        return axios.get('/api/recipes')
         .then((res) => {
           return res.data.map((recipe) => {
             return {
@@ -99,18 +99,18 @@ module.exports = {
             }
           })
         })
-      } 
-      else {
-        return axios.get('http://localhost:3000/api/recipes')
-        .then((res) => {
-          return res.data.map((recipe) => {
-            return {
-              route: '/recipes/' + recipe.id,
-              payload: recipe
-            }
-          })
-        })
-      }
+      // } 
+      // else {
+      //   return axios.get('http://localhost:3000/api/recipes')
+      //   .then((res) => {
+      //     return res.data.map((recipe) => {
+      //       return {
+      //         route: '/recipes/' + recipe.id,
+      //         payload: recipe
+      //       }
+      //     })
+      //   })
+      // }
     }
   },
   serverMiddleware: [
