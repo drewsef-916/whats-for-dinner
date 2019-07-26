@@ -2,11 +2,12 @@ const pkg = require('./package');
 import axios from 'axios';
 require('dotenv').config();
 
+const prod = process.env.NODE_ENV === 'production'
 
 module.exports = {
 
   env: {
-    baseURL: (process.env.NODE_ENV === 'production' ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000')
+    // baseURL: (process.env.NODE_ENV === 'production' ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000')
   },
 
   mode: 'universal',
@@ -73,7 +74,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    // baseURL: prod ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000'
+    baseURL: process.env.NODE_ENV === 'production' ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000'
   },
 
   /*
@@ -87,13 +88,28 @@ module.exports = {
     }
   },
   generate: {
-    routes: function() {
-      return axios.get(`${process.env.baseURL}/api/recipes`)
-      .then(res => {
-        return res.data.map(recipe => {
-          return '/recipes/' + recipe.id
+    routes: function () {
+      if (prod) {
+        return axios.get('https://whats-for-dinner.netlify.com/api/recipes')
+        .then((res) => {
+          return res.data.map((recipe) => {
+            return {
+              route: '/recipes/' + recipe.id,
+              payload: recipe
+            }
+          })
         })
-      })
+      } else {
+        return axios.get('http://localhost:3000/api/recipes')
+        .then((res) => {
+          return res.data.map((recipe) => {
+            return {
+              route: '/recipes/' + recipe.id,
+              payload: recipe
+            }
+          })
+        })
+      }
     }
   },
   serverMiddleware: [
