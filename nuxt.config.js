@@ -74,9 +74,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: process.env.NODE_ENV === 'production' ?
-    `https://whats-for-dinner.netlify.com` :
-    `http://localhost:3000`
+    baseURL: `https://whats-for-dinner.netlify.com`
   },
 
   /*
@@ -91,7 +89,7 @@ module.exports = {
   },
   generate: {
     routes: function () {
-      return axios.get(`/api/recipes`)
+      return axios.get(`https://whats-for-dinner.netlify.com/api/recipes`)
       .then((res) => {
         return res.data.map((recipe) => {
           return {
