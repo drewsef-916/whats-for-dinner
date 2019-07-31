@@ -39,7 +39,7 @@ export default {
   },
   created: async function() {
     try {
-      const list = await this.$axios.$get(`${this.$axios.defaults.baseURL}/api/recipes`)
+      const list = await this.$axios.$get(`${this.$axios.baseURL}/api/recipes`)
       this.recipes = list;
 
     } catch(err) {
