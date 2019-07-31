@@ -3,6 +3,7 @@ const axios = require('axios');
 require('dotenv').config();
 
 // if (process.env.NODE_ENV !== 'production') process.env.API_URL === 'http://localhost:3000'
+const prod = process.env.NODE_ENV === 'production'
 
 module.exports = {
 
@@ -74,7 +75,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    // baseURL: process.env.API_URL
+    baseURL: prod ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000'
   },
 
   /*
@@ -89,7 +90,7 @@ module.exports = {
   },
   generate: {
     routes: function () {
-      return axios.get(`/api/recipes`)
+      return axios.get(`${this.axios.defaults.baseURL}/api/recipes`)
       .then((res) => {
         return res.data.map((recipe) => {
           return {
