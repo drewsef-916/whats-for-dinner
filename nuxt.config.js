@@ -2,13 +2,10 @@ const pkg = require('./package');
 const axios = require('axios');
 require('dotenv').config();
 
-// if (process.env.NODE_ENV !== 'production') process.env.API_URL === 'http://localhost:3000'
-// const prod = process.env.NODE_ENV === 'production'
-
 module.exports = {
 
   env: {
-    // baseURL: (process.env.NODE_ENV === 'production' ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000')
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   },
 
   mode: 'universal',
@@ -75,7 +72,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: process.env.NODE_ENV === 'production' ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000',
+    // baseURL: process.env.NODE_ENV === 'production' ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000',
     https: true,
   },
 
@@ -91,7 +88,6 @@ module.exports = {
   },
   generate: {
     routes: function () {
-      // const baseURL = process.env.NODE_ENV === 'production' ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000';
       return axios.get(`https://api.mlab.com/api/1/databases/wfddev/collections/recipes?apiKey=${process.env.MLAB_SECRET}`)
       .then((res) => {
         return res.data.map((recipe) => {

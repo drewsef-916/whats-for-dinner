@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '~/plugins/axios'
 
 export default {
   data: function() {
@@ -37,7 +37,7 @@ export default {
     try {
       const list = await this.$axios.$get('/api/recipes')
       this.recipe = list.find(recipe => {
-        return recipe.id === this.$route.params.id 
+        return recipe.id === this.$route.params.id
       })
     } catch(err) {
       console.log(err)
@@ -47,7 +47,7 @@ export default {
     crossItOut: function(index) {
       const refDirection = this.$refs;
       const direction = this.$refs.direction[index];
-      direction.style.textDecoration === "line-through" ? 
+      direction.style.textDecoration === "line-through" ?
       direction.style.textDecoration = "none" :
       direction.style.textDecoration = "line-through";
     },

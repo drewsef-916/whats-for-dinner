@@ -20,6 +20,7 @@
 import navAbout from '~/components/navAbout.vue';
 import navSearch from '~/components/navSearch.vue';
 import navCalendar from '~/components/navCalendar.vue';
+import axios from '~/plugins/axios';
 
 export default {
     components: {
@@ -57,5 +58,5 @@ export default {
     .logo {
         max-height: 12vh;
     }
-    
+
 </style>
