@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 import navAbout from '~/components/navAbout.vue';
 import navSearch from '~/components/navSearch.vue';
 import navCalendar from '~/components/navCalendar.vue';
@@ -30,13 +32,9 @@ export default {
         navSearch,
         navCalendar
     },
-    data: function() {
-        return {
-            recipes: [],
-        }
-    },
-    created() {
-        this.recipes = ["test"];
+    async asyncData() {
+        const recipeList = await this.$axios.$get(`/.netlify/functions-build/allRecipes`);
+        return { recipes: recipeList }
     }
 }
 </script>

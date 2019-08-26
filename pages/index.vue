@@ -27,18 +27,13 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
-
-  data: function() {
-    return {
-      recipes: [],
-    }
+  created: async function() {
+    const recipeList = await this.$axios.$get(`/.netlify/functions-build/allRecipes`);
+    return {recipes: recipeList}
   },
-  created: function() {
-    this.recipes = ["test"];
-  },
-
 }
 </script>
 
