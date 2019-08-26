@@ -27,18 +27,16 @@
 </template>
 
 <script>
-import masterList from '../masterRecipeList.json';
 
 export default {
-  
+
   data: function() {
     return {
       recipes: [],
     }
   },
   created: function() {
-    console.log(masterList);
-    this.recipes = masterList;
+    this.recipes = ["test"];
   },
 
 }

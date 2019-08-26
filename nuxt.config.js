@@ -1,5 +1,5 @@
 const pkg = require('./package');
-const masterList = require('./masterRecipeList.json');
+require('dotenv').config();
 
 module.exports = {
 
@@ -85,10 +85,17 @@ module.exports = {
     }
   },
   generate: {
-    routes: function() {
-      return masterList.map(recipe => {
-        return '/recipes/' + recipe.id
+    routes: function () {
+      return axios.get(`/functions/allRecipes`)
+      .then((res) => {
+        return res.map((recipe) => {
+          return {
+            route: '/recipes/' + recipe.id,
+            payload: recipe
+          }
+        })
       })
+      .catch(e => {console.log(e)})
     }
   }
   // serverMiddleware: [

@@ -1,11 +1,8 @@
 require("dotenv").config;
 
-exports.handler = async () => {
+exports.handler = async (event, context) => {
   return {
     statusCode: 200,
-    body: JSON.stringify({
-      message: "Hellllooooo",
-      event
-    })
+    body: "Hello, world!"
   }
 }
