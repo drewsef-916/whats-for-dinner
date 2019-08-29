@@ -32,10 +32,17 @@ export default {
         navSearch,
         navCalendar
     },
-    async asyncData() {
-        const recipeList = await this.$axios.$get(`/.netlify/functions-build/allRecipes`);
-        return { recipes: recipeList }
-    }
+    data: function() {
+        return { recipes: [] }
+    },
+    created: async function() {
+        try {
+            const recipeList = await this.$axios.$get(`https://whats-for-dinner.netlify.com/.netlify/functions-build/allRecipes`);
+            this.recipes = recipeList;
+        } catch {
+            (error) => console.log(error);
+        }
+    },
 }
 </script>
 

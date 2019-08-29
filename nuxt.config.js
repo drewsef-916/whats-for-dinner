@@ -86,11 +86,12 @@ module.exports = {
     }
   },
   generate: {
-    routes: function () {
-      return axios.get(`https://whats-for-dinner.netlify.com/.netlify/functions-build/allRecipes`)
+    routes: function (callback) {
+      axios.get(`https://whats-for-dinner.netlify.com/.netlify/functions-build/allRecipes`)
       .then((res) => {
         console.log(res);
-        return res.map((recipe) => {
+        return res.map(recipe => {
+          console.log(recipe)
           return {
             route: '/recipes/' + recipe.id,
             payload: recipe
