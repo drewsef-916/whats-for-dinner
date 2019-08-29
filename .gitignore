@@ -82,3 +82,6 @@ dist
 
 # Service worker
 sw.*
+
+# Netlify Functions Build Directory
+functions-build/

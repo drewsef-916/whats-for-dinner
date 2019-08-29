@@ -27,20 +27,20 @@
 </template>
 
 <script>
-import masterList from '../masterRecipeList.json';
+import axios from 'axios';
 
 export default {
-  
   data: function() {
-    return {
-      recipes: [],
+    return { recipes: [] }
+  },
+  created: async function() {
+    try {
+      const recipeList = await this.$axios.$get(`https://whats-for-dinner.netlify.com/.netlify/functions-build/allRecipes`);
+      this.recipes = recipeList;
+    } catch {
+      (error) => console.log(error);
     }
-  },
-  created: function() {
-    console.log(masterList);
-    this.recipes = masterList;
-  },
-
+},
 }
 </script>
 

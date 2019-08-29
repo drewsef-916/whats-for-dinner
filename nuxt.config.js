@@ -1,5 +1,6 @@
 const pkg = require('./package');
-const masterList = require('./masterRecipeList.json');
+const axios = require('axios');
+require('dotenv').config();
 
 module.exports = {
 
@@ -85,10 +86,19 @@ module.exports = {
     }
   },
   generate: {
-    routes: function() {
-      return masterList.map(recipe => {
-        return '/recipes/' + recipe.id
+    routes: function (callback) {
+      axios.get(`https://whats-for-dinner.netlify.com/.netlify/functions-build/allRecipes`)
+      .then((res) => {
+        console.log(res);
+        return res.map(recipe => {
+          console.log(recipe)
+          return {
+            route: '/recipes/' + recipe.id,
+            payload: recipe
+          }
+        })
       })
+      .catch(e => {console.log(e)})
     }
   }
   // serverMiddleware: [

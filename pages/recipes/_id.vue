@@ -25,24 +25,18 @@
 </template>
 
 <script>
-import masterRecipeList from '../../masterRecipeList.json';
+import axios from 'axios'
 
 export default {
-  data: function() {
-    return {
-        recipe: {},
-    }
-  },
-  created: function() {
-    this.recipe = masterRecipeList.find(recipe => {
-      return recipe.id === this.$route.params.id 
-    })
+  async asyncData ({ params, error, payload }) {
+    if (payload) return {recipe: payload}
+    else return this.$axios.$get('/functions-build/allRecipes')
   },
   methods: {
     crossItOut: function(index) {
       const refDirection = this.$refs;
       const direction = this.$refs.direction[index];
-      direction.style.textDecoration === "line-through" ? 
+      direction.style.textDecoration === "line-through" ?
       direction.style.textDecoration = "none" :
       direction.style.textDecoration = "line-through";
     },
