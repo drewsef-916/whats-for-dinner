@@ -1,9 +1,21 @@
 const pkg = require('./package');
+import axios from 'axios'
+
+let dynamicRoutes = () => {
+  return axios.get('https://fast-reef-73314.herokuapp.com/recipes')
+  .then(res => {
+    return res.data.map(recipe => {
+      return {
+        route: `/recipes/ + ${recipe.id}`,
+        payload: recipe
+      }
+    })
+  })
+}
 
 module.exports = {
 
   env: {
-    // baseUrl: process.env.API_URL || 'http://localhost:3000',
   },
 
   mode: 'universal',
@@ -69,8 +81,6 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-    // baseURL: prod ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000'
   },
 
   /*
@@ -84,12 +94,6 @@ module.exports = {
     }
   },
   generate: {
-    // routes: async function() {
-    //   const routes = await axios.get('https://fast-reef-73314.herokuapp.com/recipes')
-    //   routes.forEach(route => return )
-    // }
+    routes: dynamicRoutes
   }
-  // serverMiddleware: [
-  //   {path: '/api', handler: '~/api/index.js'}
-  // ]
 }

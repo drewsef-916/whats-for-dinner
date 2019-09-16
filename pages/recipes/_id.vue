@@ -32,10 +32,13 @@ export default {
         recipe: {},
     }
   },
-  created: function({ params }) {
-    console.log(params)
-    this.recipe = params.slug
+  async asyncData ({ params, error, payload }) {
+    if (payload) return {recipe: payload}
   },
+  // created: function({ params }) {
+  //   console.log(params)
+  //   this.recipe = params.slug
+  // },
   methods: {
     crossItOut: function(index) {
       const refDirection = this.$refs;
