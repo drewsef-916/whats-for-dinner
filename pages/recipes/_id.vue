@@ -32,15 +32,9 @@ export default {
         recipe: {},
     }
   },
-  created: function() {
-    console.log(this.$route.path)
-    // this.$axios.get('https://fast-reef-73314.herokuapp.com/recipes')
-    // .then(res => {
-    //   res.filter(recipe => recipe.id == $nuxt.$route.path)
-    // })
-    // .catch(err => {
-    //   console.log(err)
-    // })
+  created: function({ params }) {
+    console.log(params)
+    this.recipe = params.slug
   },
   methods: {
     crossItOut: function(index) {

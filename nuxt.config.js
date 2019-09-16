@@ -84,9 +84,10 @@ module.exports = {
     }
   },
   generate: {
-    routes: async function() {
-     
-    }
+    // routes: async function() {
+    //   const routes = await axios.get('https://fast-reef-73314.herokuapp.com/recipes')
+    //   routes.forEach(route => return )
+    // }
   }
   // serverMiddleware: [
   //   {path: '/api', handler: '~/api/index.js'}
