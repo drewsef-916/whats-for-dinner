@@ -7,54 +7,93 @@
                     <label for="name">
                         Recipe Name
                     </label>
-                    <input name="name" id="name" type="text">
+                    <input name="name" id="name" type="text" ref="recipeName">
                </div>
-                <fa icon="chevron-up" @click="removeLines(ingredinet)"/>
-                <label for="ingredients">
-                    Ingredients
-                </label>
-                <fa icon="chevron-down" @click="addLines(ingredient)"/>
-               <div class="ing-container" ref="ing-container" v-for="(item, index) in this.ingredients" v-bind:key="index">
+               <div class="ing-container">
+                    <label for="ingredient">
+                        Ingredient {{this.ingredients.length + 1 || 1}}
+                    </label>
+                    <input name="ingredient" id="ingredient" type="text" ref="ingredient">
+                    <h5 class="add-item" @click="addItem('ingredient')">Add Ingredient</h5>
+                    <h5 @click="removeItem('ingredient')">Undo</h5>
                </div>
-                <fa icon="chevron-up" @click="removeLines(direction)"/>
-                <label for="directions">
-                    Directions
-                </label>
-                <fa icon="chevron-down" @click="addLines(direction)"/>
-               <div class="dir-container" ref="dir-container" v-for="(item, index) in this.directions" v-bind:key="index">
+               <div class="dir-container">
+                    <label for="direction">
+                        Direction {{this.directions.length + 1 || 1}}
+                    </label>
+                    <textarea name="direction" id="direction" type="text" ref="direction"></textarea>
+                    <h5 class="add-item" @click="addItem('direction')">Add Direction</h5>
+                    <h5 @click="removeItem('direction')">Undo</h5>
                </div>
-               <button type="submit" class="submit">Add Recipe</button>
+               <div class="preview">
+                   <h4 v-if="this.ingredients.length">Current Ingredients</h4>
+                        <ul>
+                            <li v-for="item in this.ingredients" v-bind:key="item.index">{{item}}</li>
+                        </ul>
+                   <h4 v-if="this.directions.length">Current Directions</h4>
+                        <ul>
+                            <li v-for="item in this.directions" v-bind:key="item.index">{{item}}</li>
+                        </ul>
+               </div>
+               <button type="submit" class="submit" @click.prevent="handleSubmit">Add Recipe</button>
             </form>
         </main>
     </div>
 </template>
 
 <script>
-import axios from 'axios'
-
+import axios from '~/plugins/axios';
 export default {
-
     data() {
         return {
+            id: '',
             name: '',
-            ingredients: [
-                `<input name="ingredient" type="text" ref="ingredient">`
-            ],
-            directions: [
-                `<input name="direction" type="text" ref="direction">`
-            ]
+            ingredients: [],
+            directions: []
         }
     },
-
     methods: {
-        onSubmit(name) {
-            alert(name)
+        handleSubmit() {
+            const name = this.$refs.recipeName.value;
+            const angryEmoji = String.fromCodePoint(0x1F621);
+            if (name === '') {
+                alert('No Blank Names! ' + angryEmoji);
+                return;
+            }
+            const idify = name.replace(/\W/gi, '').toLowerCase();
+            this.$axios.$post('/api/addRecipe', {
+                id: idify,
+                name: name,
+                ingredients: this.ingredients,
+                directions: this.directions
+            })
+            .then(res => {
+                console.log(res);
+                this.$router.push('/');
+            })
+            .catch(err => {
+                console.error(err);
+            })
         },
-        addLines(type) {
-            console.log(this.$refs.type);
+        addItem(type) {
+            if (type === "direction") {
+                if (this.$refs.direction.value === '') return
+                this.directions.push(this.$refs.direction.value);
+                this.$refs.direction.value = '';
+            } else {
+                if (this.$refs.ingredient.value === '') return
+                this.ingredients.push(this.$refs.ingredient.value);
+                this.$refs.ingredient.value = '';
+            }
         },
-        removeLines(type) {
-            console.log('remove lines');
+        removeItem(type) {
+            if (type === 'direction') {
+                if (this.directions.length === 0) return;
+                this.directions.pop();
+            } else {
+                if (this.ingredients.length === 0) return;
+                this.ingredients.pop();
+            }
         }
     }
 }
@@ -64,6 +103,18 @@ export default {
     input {
         margin-bottom: 10px;
         border: 1px solid gray;
+        border-radius: 5px;
+        width: 60vw;
+        height: 2rem;
+        font-size: 1rem;
+    }
+    textarea {
+        margin-bottom: 10px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        width: 60vw;
+        height: 4rem;
+        font-size: 1rem;
     }
     .page-wrapper {
         background: url(../assets/bg.png);
@@ -85,14 +136,36 @@ export default {
         display: grid;
         justify-content: center;
         text-align: center;
-        padding-top: 5px;
+        padding-top: 15px;
+    }
+    .ing-container h5 {
+        margin: 0 auto 10px auto;
+        display: inline-block;
+    }
+    .dir-container h5 {
+        margin: 0 auto 10px auto;
+        display: inline-block;
+    }
+    .add-item {
+        margin: 0.5rem auto;
     }
     .submit {
         display: block;
-        margin: 0 auto;
+        margin: 1rem auto;
         font-size: 1.3rem;
         border: 3px solid grey;
         border-radius: 5px;
         background: white;
+    }
+    .preview {
+        color: lightgrey;
+        text-align: center;
+    }
+    .preview h4 {
+        margin-bottom: 0;
+    }
+    .preview ul {
+        margin: 0;
+        padding: 0;
     }
 </style>
