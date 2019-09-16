@@ -39,7 +39,7 @@ export default {
     created() {
         this.$axios.get('https://fast-reef-73314.herokuapp.com/recipes')
         .then(res => {
-            this.recipes = res
+            this.recipes = res.data
         })
         .catch(err => {
             console.log(err)
