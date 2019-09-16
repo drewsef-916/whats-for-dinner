@@ -23,7 +23,6 @@
 import navAbout from '~/components/navAbout.vue';
 import navSearch from '~/components/navSearch.vue';
 import navCalendar from '~/components/navCalendar.vue';
-import masterList from '../masterRecipeList.json';
 
 export default {
     components: {
@@ -37,7 +36,6 @@ export default {
         }
     },
     created() {
-        this.recipes = masterList;
     }
 }
 </script>

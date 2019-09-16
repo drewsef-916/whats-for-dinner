@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import masterRecipeList from '../../masterRecipeList.json';
 
 export default {
   data: function() {
@@ -34,9 +33,7 @@ export default {
     }
   },
   created: function() {
-    this.recipe = masterRecipeList.find(recipe => {
-      return recipe.id === this.$route.params.id 
-    })
+
   },
   methods: {
     crossItOut: function(index) {
@@ -47,13 +44,11 @@ export default {
       direction.style.textDecoration = "line-through";
     },
     logDate: function() {
-      console.log(masterRecipeList);
       const currentRecipe = this.recipe;
       const jsonToday = new Date().toJSON();
       const justTheDate = jsonToday.slice(0, 10);
       currentRecipe.lastEaten = justTheDate;
       currentRecipe.timesEaten++;
-      masterRecipeList.filter(item => item.id !== currentRecipe.id).push(currentRecipe);
     },
     toHumanDate: function(date) {
       try {

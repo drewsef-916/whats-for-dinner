@@ -1,5 +1,4 @@
 const pkg = require('./package');
-const masterList = require('./masterRecipeList.json');
 
 module.exports = {
 
@@ -85,10 +84,8 @@ module.exports = {
     }
   },
   generate: {
-    routes: function() {
-      return masterList.map(recipe => {
-        return '/recipes/' + recipe.id
-      })
+    routes: async function() {
+     
     }
   }
   // serverMiddleware: [

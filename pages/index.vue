@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import masterList from '../masterRecipeList.json';
 
 export default {
   
@@ -37,8 +36,6 @@ export default {
     }
   },
   created: function() {
-    console.log(masterList);
-    this.recipes = masterList;
   },
 
 }
