@@ -23,6 +23,7 @@
 import navAbout from '~/components/navAbout.vue';
 import navSearch from '~/components/navSearch.vue';
 import navCalendar from '~/components/navCalendar.vue';
+import axios from 'axios'
 
 export default {
     components: {
@@ -36,6 +37,13 @@ export default {
         }
     },
     created() {
+        axios.get('https://fast-reef-73314.herokuapp.com/recipes')
+        .then(res => {
+            this.recipes = res
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 }
 </script>
@@ -58,5 +66,5 @@ export default {
     .logo {
         max-height: 12vh;
     }
-    
+
 </style>

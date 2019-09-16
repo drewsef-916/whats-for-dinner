@@ -1,6 +1,5 @@
 <template>
   <div class="page-wrapper">
-    <!-- <h1 class="page-title">All Recipes</h1> -->
     <main class="recipe-container">
         <div class="recipe" v-for="recipe in recipes" v-bind:key="recipe.id">
           <nuxt-link :to="{name: 'recipes-id', params: {id: recipe.id}}">
@@ -27,15 +26,23 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
-  
+
   data: function() {
     return {
       recipes: [],
     }
   },
   created: function() {
+    axios.get('https://fast-reef-73314.herokuapp.com/recipes')
+    .then(res => {
+        this.recipes = res
+    })
+    .catch(err => {
+        console.log(err)
+    })
   },
 
 }
