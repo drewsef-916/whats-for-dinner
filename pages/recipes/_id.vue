@@ -33,13 +33,20 @@ export default {
     }
   },
   created: function() {
-
+    console.log(this.$route.path)
+    // this.$axios.get('https://fast-reef-73314.herokuapp.com/recipes')
+    // .then(res => {
+    //   res.filter(recipe => recipe.id == $nuxt.$route.path)
+    // })
+    // .catch(err => {
+    //   console.log(err)
+    // })
   },
   methods: {
     crossItOut: function(index) {
       const refDirection = this.$refs;
       const direction = this.$refs.direction[index];
-      direction.style.textDecoration === "line-through" ? 
+      direction.style.textDecoration === "line-through" ?
       direction.style.textDecoration = "none" :
       direction.style.textDecoration = "line-through";
     },

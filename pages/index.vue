@@ -36,7 +36,7 @@ export default {
     }
   },
   created: function() {
-    axios.get('https://fast-reef-73314.herokuapp.com/recipes')
+    this.$axios.get('https://fast-reef-73314.herokuapp.com/recipes')
     .then(res => {
         this.recipes = res
     })
