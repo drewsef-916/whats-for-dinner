@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import axios from '~/plugins/axios';
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -61,19 +61,21 @@ export default {
                 return;
             }
             const idify = name.replace(/\W/gi, '').toLowerCase();
-            this.$axios.$post('/api/addRecipe', {
-                id: idify,
-                name: name,
-                ingredients: this.ingredients,
-                directions: this.directions
-            })
-            .then(res => {
-                console.log(res);
-                this.$router.push('/');
-            })
-            .catch(err => {
-                console.error(err);
-            })
+            console.log(name === "testing")
+            console.log(this.$refs)
+            // this.$axios.$post('/api/addRecipe', {
+            //     id: idify,
+            //     name: name,
+            //     ingredients: this.ingredients,
+            //     directions: this.directions
+            // })
+            // .then(res => {
+            //     console.log(res);
+            //     this.$router.push('/');
+            // })
+            // .catch(err => {
+            //     console.error(err);
+            // })
         },
         addItem(type) {
             if (type === "direction") {

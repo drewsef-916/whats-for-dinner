@@ -1,5 +1,5 @@
 const pkg = require('./package');
-import axios from 'axios'
+const axios = require('axios');
 
 let dynamicRoutes = () => {
   return axios.get('https://fast-reef-73314.herokuapp.com/recipes')
