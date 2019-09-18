@@ -61,21 +61,19 @@ export default {
                 return;
             }
             const idify = name.replace(/\W/gi, '').toLowerCase();
-            console.log(name === "testing")
-            console.log(this.$refs)
-            // this.$axios.$post('/api/addRecipe', {
-            //     id: idify,
-            //     name: name,
-            //     ingredients: this.ingredients,
-            //     directions: this.directions
-            // })
-            // .then(res => {
-            //     console.log(res);
-            //     this.$router.push('/');
-            // })
-            // .catch(err => {
-            //     console.error(err);
-            // })
+            this.$axios.$post('//fast-reef-73314.herokuapp.com/add-recipe', {
+                id: idify,
+                name: name,
+                ingredients: this.ingredients,
+                directions: this.directions
+            })
+            .then(res => {
+                this.$router.push('/');
+            })
+            .catch(err => {
+                console.error(err.message)
+                return this.$nuxt.error({statusCode: 404, message: "Sorry, something went wrong."});
+            })
         },
         addItem(type) {
             if (type === "direction") {
