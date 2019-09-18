@@ -10,7 +10,7 @@
         <!-- <navCalendar :recipeList="this.recipes"/> -->
         <div>
             <nuxt-link to="/converter">
-                <fa icon="fa-exchange-alt" class="icon"/>
+                <fa icon="exchange-alt" class="icon"/>
             </nuxt-link>
         </div>
         <div>

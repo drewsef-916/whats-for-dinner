@@ -117,7 +117,7 @@ export default {
         font-size: 1rem;
     }
     .page-wrapper {
-        background: url(../assets/bg.png);
+        background-color: white;
         background-attachment: fixed;
         height: 85vh;
         margin-top: 15vh;

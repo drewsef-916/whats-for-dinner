@@ -1,6 +1,6 @@
 <template>
     <div class="page-wrapper">
-        <main>
+        <main class="converter-wrapper">
             <h3>Measurement Converter</h3>
             <div>
               <input type="text" ref="unitNumber">
@@ -51,13 +51,18 @@ const conversionConstants = [
 export default {
   methods: {
     convertUnits(from, to) {
-
+      console.log(from, to)
     }
   }
 }
 </script>
 
 <style scoped>
-
+  .converter-wrapper {
+    display: flex;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
 
