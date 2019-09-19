@@ -18,7 +18,7 @@
                 <option value="tablespoons">Tablespoons</option>
               </select>
               <button @click="convertUnits($refs.fromUnit.value, $refs.toUnit.value)">Convert Units</button>
-              <h6 class="output" ref="output">Conversion goes here</h6>
+              <h6 class="output" ref="output">{{this.conversion}}</h6>
             </div>
         </main>
     </div>
@@ -44,14 +44,31 @@ const conversionConstants = [
   ]},
   {"teaspoons": [
     {"cups": .025},
-    {"quarts": 0.00625495},
-    {"tablespoons": 0.333}
+    {"quarts": 0.00520833}, //192 teaspoons in a quart
+    {"tablespoons": 0.333} //64 tablespoons in a quart
   ]},
 ]
+const roundingRules = [
+  {.250: "1/4"},
+  {.750: "3/4"},
+  {.333: "1/3"},
+  {.667: "2/3"},
+  {.125: "1/8"},
+  {.375: "3/8"},
+  {.625: "5/8"},
+  {.875: "7/8"},
+  {.500: "1/2"},
+]
 export default {
+  data: function() {
+    conversion: 0
+  },
   methods: {
     convertUnits(from, to) {
-      console.log(from, to)
+      const conversionValue = ((conversionConstants.from * $refs.unitNumber) * conversionConstants.to).toFixed(3)
+      const remainder = conversionValue % 1
+      console.log(remainder)
+      if (remainder == "000") this.conversion = conversionValue
     }
   }
 }
