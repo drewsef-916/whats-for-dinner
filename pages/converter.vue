@@ -17,7 +17,7 @@
                 <option value="teaspoons">Teaspoons</option>
                 <option value="tablespoons">Tablespoons</option>
               </select>
-              <button @click="convertUnits(this.$refs.fromUnit.value, this.$refs.toUnit.value)">Convert Units</button>
+              <button @click="convertUnits($refs.fromUnit.value, $refs.toUnit.value)">Convert Units</button>
               <h6 class="output" ref="output">Conversion goes here</h6>
             </div>
         </main>
@@ -38,14 +38,14 @@ const conversionConstants = [
     {"teaspoons": 192}
   ]},
   {"tablespoons": [
-    {"cups": 0},
-    {"quarts": 0},
-    {"teaspoons": 0}
+    {"cups": 0.0625},
+    {"quarts": .015625},
+    {"teaspoons": 3}
   ]},
   {"teaspoons": [
-    {"cups": 0},
-    {"quarts": 0},
-    {"tablespoons": 0}
+    {"cups": .025},
+    {"quarts": 0.00625495},
+    {"tablespoons": 0.333}
   ]},
 ]
 export default {
