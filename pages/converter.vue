@@ -3,19 +3,19 @@
         <main class="converter-wrapper">
             <h3>Measurement Converter</h3>
             <div>
-              <input type="text" ref="unitNumber">
+              <input type="text" ref="unitNumber" placeholder="Quantity">
               <select ref="fromUnit">
-                <option value="cups"></option>
-                <option value="quarts"></option>
-                <option value="teaspoons"></option>
-                <option value="tablespoons"></option>
+                <option value="cups">Cups</option>
+                <option value="quarts">Quarts</option>
+                <option value="teaspoons">Teaspoons</option>
+                <option value="tablespoons">Tablespoons</option>
               </select>
               <p>to:</p>
               <select ref="toUnit">
-                <option value="cups"></option>
-                <option value="quarts"></option>
-                <option value="teaspoons"></option>
-                <option value="tablespoons"></option>
+                <option value="cups">Cups</option>
+                <option value="quarts">Quarts</option>
+                <option value="teaspoons">Teaspoons</option>
+                <option value="tablespoons">Tablespoons</option>
               </select>
               <button @click="convertUnits(this.$refs.fromUnit.value, this.$refs.toUnit.value)">Convert Units</button>
               <h6 class="output" ref="output">Conversion goes here</h6>
@@ -60,9 +60,24 @@ export default {
 <style scoped>
   .converter-wrapper {
     display: flex;
+    flex-direction: column;
     background-color: white;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    margin: 18vh auto;
+    min-width: 60vw;
+    max-width: 80vw;
+    border: 2px solid black;
+    border-radius: 10px;
   }
+  .page-wrapper {
+    background: url(../assets/bg.png);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
 </style>
 

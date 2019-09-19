@@ -20,7 +20,8 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Titan+One|Varela&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
 
 body {
   margin: 0;
@@ -28,11 +29,14 @@ body {
 
 html {
   box-sizing: border-box;
-  font-family: 'Varela', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Handlee', cursive;
 }
 
 h3 {
-  font-family: 'Titan One', cursive;
   font-size: 1.5rem;
   text-align: center;
   color: #777;

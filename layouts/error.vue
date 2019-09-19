@@ -46,7 +46,7 @@ export default {
     clip-path: circle();
   }
   .back-home {
-    font-family: 'Titan One', cursive;
+    font-family: 'Handlee', cursive;
     font-size: 1rem;
   }
   .error-text {
