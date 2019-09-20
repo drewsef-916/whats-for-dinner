@@ -94,9 +94,6 @@ export default {
     justify-items: center;
     width: 80vw;
     margin: 20px 0;
-    border: 2px solid black;
-    border-radius: 10px;
-    background: white;
   }
 
   .directions {

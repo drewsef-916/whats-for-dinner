@@ -73,9 +73,13 @@ h5 {
   justify-items: center;
   width: 80vw;
   margin: 20px 0;
-  border: 2px solid black;
+  padding: 12px;
+  border: 8px solid transparent;
   border-radius: 10px;
-  background: white;
+  background:
+    linear-gradient(#B7D3F0, #6B90EE) content-box,
+    linear-gradient(#c769c2, #211A4D) padding-box,
+    linear-gradient(#F1F48C, #8BE5DC) border-box;
 }
 
 .directions {
