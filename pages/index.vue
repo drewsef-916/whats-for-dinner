@@ -35,6 +35,13 @@ export default {
       recipes: [],
     }
   },
+  methods: {
+    handleScroll() {
+      if (window.scrollY > 100) {
+        //make a back to top button
+      }
+    }
+  },
   created: async function() {
     this.$axios.get('https://fast-reef-73314.herokuapp.com/recipes')
     .then(res => {
@@ -43,6 +50,12 @@ export default {
     .catch(err => {
         console.log(err)
     })
+  },
+  beforeMount() {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  beforeDestroy() {
+    window.addEventListener('scroll', this.handleScroll)
   },
 
 }
