@@ -86,6 +86,12 @@ export default {
       const conversionNumber = this.$refs.unitNumber.value
       const conversionValue = (conversionNumber * conversionConstants[from][to]).toFixed(3)
       const remainder = (conversionValue % 1).toFixed(3)
+      if (remainder == '0') {
+        const roundedValue = Math.round(conversionValue)
+        this.$refs.output.innerHTML = `${conversionNumber} ${from} equals ${roundedValue} ${to}`
+      } else {
+        this.$refs.output.innerHTML = `${conversionNumber} ${from} equals ${conversionValue} ${to}`
+      }
       // if (remainder < 0.0625) {
       //   this.$refs.output.innerHTML = `${conversionNumber} ${from} equals ${conversionValue} ${to}`
       // } else {
@@ -122,6 +128,9 @@ export default {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+  }
+  .output {
+    font-size: 2rem;
   }
 
 </style>
