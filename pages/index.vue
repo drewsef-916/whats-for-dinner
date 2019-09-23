@@ -36,11 +36,11 @@ export default {
     }
   },
   methods: {
-    handleScroll() {
-      if (window.scrollY > 100) {
-        //make a back to top button
-      }
-    }
+    // handleScroll() {
+    //   if (window.scrollY > 100) {
+    //     //make a back to top button
+    //   }
+    // }
   },
   created: async function() {
     this.$axios.get('https://fast-reef-73314.herokuapp.com/recipes')
@@ -51,12 +51,12 @@ export default {
         console.log(err)
     })
   },
-  beforeMount() {
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  beforeDestroy() {
-    window.addEventListener('scroll', this.handleScroll)
-  },
+  // beforeMount() {
+  //   window.addEventListener('scroll', this.handleScroll)
+  // },
+  // beforeDestroy() {
+  //   window.addEventListener('scroll', this.handleScroll)
+  // },
 
 }
 </script>

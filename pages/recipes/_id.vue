@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
 
 export default {
   data: function() {
@@ -33,12 +34,21 @@ export default {
     }
   },
   async asyncData ({ params, error, payload }) {
-    if (payload) return {recipe: payload}
+    if (payload) {
+      console.log(`payload`, payload)
+      return {recipe: payload}
+    }
   },
-  // created: function({ params }) {
-  //   console.log(params)
-  //   this.recipe = params.slug
-  // },
+  created: function() {
+    const routeId = this._routerRoot._route.params.id
+     this.$axios.get(`https://fast-reef-73314.herokuapp.com/recipe/${routeId}`)
+    .then(res => {
+      this.recipe = res.data
+    })
+    .catch(err => {
+        console.log(err)
+    })
+  },
   methods: {
     crossItOut: function(index) {
       const refDirection = this.$refs;

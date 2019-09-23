@@ -6,8 +6,7 @@ let dynamicRoutes = () => {
   .then(res => {
     return res.data.map(recipe => {
       return {
-        route: `/recipes/ + ${recipe.id}`,
-        payload: recipe
+        route: `/recipes/ + ${recipe.id}`
       }
     })
   })
