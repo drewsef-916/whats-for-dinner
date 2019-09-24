@@ -6,14 +6,14 @@
           <ul class="ingredients">
             <h5>Ingredients</h5>
             <hr>
-            <li v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.index">
+            <li v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.index" @click="crossItOutIng(index)" ref="ingredient">
               {{ingredient}}
             </li>
           </ul>
           <ul class="directions">
             <h5>Directions</h5>
             <hr>
-            <li v-for="(direction, index) in recipe.directions" v-bind:key="direction.index" @click="crossItOut(index)" ref="direction">
+            <li v-for="(direction, index) in recipe.directions" v-bind:key="direction.index" @click="crossItOutDir(index)" ref="direction">
               {{direction}}
             </li>
           </ul>
@@ -33,29 +33,29 @@ export default {
         recipe: {},
     }
   },
-  async asyncData ({ params, error, payload }) {
-    if (payload) {
-      console.log(`payload`, payload)
-      return {recipe: payload}
-    }
-  },
   created: function() {
     const routeId = this._routerRoot._route.params.id
-     this.$axios.get(`https://fast-reef-73314.herokuapp.com/recipe/${routeId}`)
+     this.$axios.get(`https://fast-reef-73314.herokuapp.com/recipes`)
     .then(res => {
-      this.recipe = res.data
+      this.recipe = res.data.find(recipe => recipe.id === routeId)
     })
     .catch(err => {
         console.log(err)
+        return this.$nuxt.error({statusCode: 404, message: err.message})
     })
   },
   methods: {
-    crossItOut: function(index) {
-      const refDirection = this.$refs;
-      const direction = this.$refs.direction[index];
+    crossItOutDir: function(index) {
+      const direction = this.$refs.direction[index]
       direction.style.textDecoration === "line-through" ?
       direction.style.textDecoration = "none" :
       direction.style.textDecoration = "line-through";
+    },
+    crossItOutIng: function(index) {
+      const ingredient = this.$refs.ingredient[index]
+      ingredient.style.textDecoration === "line-through" ?
+      ingredient.style.textDecoration = "none" :
+      ingredient.style.textDecoration = "line-through";
     },
     logDate: function() {
       const currentRecipe = this.recipe;
