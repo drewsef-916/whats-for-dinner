@@ -43,12 +43,16 @@ export default {
     // }
   },
   created: async function() {
+    console.log(this)
+    this.loading = true
     this.$axios.get('https://fast-reef-73314.herokuapp.com/recipes')
     .then(res => {
+      this.loading = false
       this.recipes = res.data
     })
     .catch(err => {
-        console.log(err)
+      this.loading = false
+      console.log(err)
     })
   },
   // beforeMount() {
@@ -91,8 +95,8 @@ h5 {
   border-radius: 10px;
   background:
     linear-gradient(#fff, #999) content-box,
-    linear-gradient(#c769c2, #fff) padding-box,
-    linear-gradient(#fff, #c769c2) border-box;
+    linear-gradient(#f1b4b4, #fff) padding-box,
+    linear-gradient(#fff, #f1b4b4) border-box;
 }
 
 .directions {
