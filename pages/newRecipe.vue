@@ -7,7 +7,7 @@
                     <label for="name">
                         Recipe Name
                     </label>
-                    <input name="name" id="name" type="text" ref="recipeName">
+                    <input v-model="name" name="name" id="name" type="text" ref="recipeName">
                </div>
                <div class="ing-container">
                     <label for="ingredient">
@@ -35,7 +35,8 @@
                             <li v-for="item in this.directions" v-bind:key="item.index">{{item}}</li>
                         </ul>
                </div>
-               <button type="submit" class="submit" @click.prevent="handleSubmit">Add Recipe</button>
+               <button v-if="this.name !== '' && this.directions.length > 0 && this.ingredients.length > 0" type="submit" class="submit" @click.prevent="handleSubmit">Add Recipe</button>
+               <button v-else type="submit" class="submit-disabled" @click.prevent="handleSubmit">Add Recipe</button>
             </form>
         </main>
     </div>
@@ -55,11 +56,6 @@ export default {
     methods: {
         handleSubmit() {
             const name = this.$refs.recipeName.value;
-            const angryEmoji = String.fromCodePoint(0x1F621);
-            if (name === '') {
-                alert('No Blank Names! ' + angryEmoji);
-                return;
-            }
             const idify = name.replace(/\W/gi, '').toLowerCase();
             this.$axios.$post('//fast-reef-73314.herokuapp.com/add-recipe', {
                 id: idify,
@@ -153,10 +149,25 @@ export default {
     .submit {
         display: block;
         margin: 1rem auto;
+        padding: 0.5em 1em;
         font-size: 1.3rem;
         border: 3px solid grey;
         border-radius: 5px;
         background: white;
+        text-transform: uppercase;
+        transition: all 0.5s;
+    }
+    .submit-disabled {
+        display: block;
+        margin: 1rem auto;
+        padding: 0.5em 1em;
+        font-size: 1.3rem;
+        border: 3px solid red;
+        border-radius: 5px;
+        background: white;
+        text-transform: uppercase;
+        opacity: 0.2;
+        pointer-events: none;
     }
     .preview {
         color: lightgrey;

@@ -90,9 +90,9 @@ h5 {
   border: 8px solid transparent;
   border-radius: 10px;
   background:
-    linear-gradient(#B7D3F0, #6B90EE) content-box,
-    linear-gradient(#c769c2, #211A4D) padding-box,
-    linear-gradient(#F1F48C, #8BE5DC) border-box;
+    linear-gradient(#fff, #999) content-box,
+    linear-gradient(#c769c2, #fff) padding-box,
+    linear-gradient(#fff, #c769c2) border-box;
 }
 
 .directions {
