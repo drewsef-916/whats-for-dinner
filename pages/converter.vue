@@ -92,17 +92,6 @@ export default {
       } else {
         this.$refs.output.innerHTML = `${conversionNumber} ${from} equals ${conversionValue} ${to}`
       }
-      // if (remainder < 0.0625) {
-      //   this.$refs.output.innerHTML = `${conversionNumber} ${from} equals ${conversionValue} ${to}`
-      // } else {
-      //   const fraction = this.numberRounder(remainder)
-      //   if (fraction === 1) {
-      //     const roundUp = conversionValue++
-      //     this.$refs.output.innerHTML = `${conversionNumber} ${from} equals ${roundUp} ${to}`
-      //   } else {
-      //     this.$refs.output.innerHTML = `${conversionNumber} ${from} equals ${conversionValue} and ${fraction} ${to}`
-      //   }
-      // }
     }
   }
 }
