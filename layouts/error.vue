@@ -46,12 +46,12 @@ export default {
     clip-path: circle();
   }
   .back-home {
-    font-family: 'Titan One', cursive;
+    font-family: 'Handlee', cursive;
     font-size: 1rem;
   }
   .error-text {
     margin: 0;
     font-family: cursive;
-    font-size: 9rem;
+    font-size: 12rem;
   }
 </style>

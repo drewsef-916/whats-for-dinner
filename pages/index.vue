@@ -1,6 +1,5 @@
 <template>
   <div class="page-wrapper">
-    <!-- <h1 class="page-title">All Recipes</h1> -->
     <main class="recipe-container">
         <div class="recipe" v-for="recipe in recipes" v-bind:key="recipe.id">
           <nuxt-link :to="{name: 'recipes-id', params: {id: recipe.id}}">
@@ -27,20 +26,42 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
+
   data: function() {
-    return { recipes: [] }
+    return {
+      recipes: [],
+    }
+  },
+  methods: {
+    // handleScroll() {
+    //   if (window.scrollY > 100) {
+    //     //make a back to top button
+    //   }
+    // }
   },
   created: async function() {
-    try {
-      const recipeList = await this.$axios.$get(`https://whats-for-dinner.netlify.com/.netlify/functions-build/allRecipes`);
-      this.recipes = recipeList;
-    } catch {
-      (error) => console.log(error);
-    }
-},
+    console.log(this)
+    this.loading = true
+    this.$axios.get('https://fast-reef-73314.herokuapp.com/recipes')
+    .then(res => {
+      this.loading = false
+      this.recipes = res.data
+    })
+    .catch(err => {
+      this.loading = false
+      console.log(err)
+    })
+  },
+  // beforeMount() {
+  //   window.addEventListener('scroll', this.handleScroll)
+  // },
+  // beforeDestroy() {
+  //   window.addEventListener('scroll', this.handleScroll)
+  // },
+
 }
 </script>
 
@@ -69,9 +90,13 @@ h5 {
   justify-items: center;
   width: 80vw;
   margin: 20px 0;
-  border: 2px solid black;
+  padding: 12px;
+  border: 8px solid transparent;
   border-radius: 10px;
-  background: white;
+  background:
+    linear-gradient(#fff, #999) content-box,
+    linear-gradient(#f1b4b4, #fff) padding-box,
+    linear-gradient(#fff, #f1b4b4) border-box;
 }
 
 .directions {

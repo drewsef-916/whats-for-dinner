@@ -6,14 +6,14 @@
           <ul class="ingredients">
             <h5>Ingredients</h5>
             <hr>
-            <li v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.index">
+            <li v-for="(ingredient, index) in recipe.ingredients" v-bind:key="ingredient.index" @click="crossItOutIng(index)" ref="ingredient">
               {{ingredient}}
             </li>
           </ul>
           <ul class="directions">
             <h5>Directions</h5>
             <hr>
-            <li v-for="(direction, index) in recipe.directions" v-bind:key="direction.index" @click="crossItOut(index)" ref="direction">
+            <li v-for="(direction, index) in recipe.directions" v-bind:key="direction.index" @click="crossItOutDir(index)" ref="direction">
               {{direction}}
             </li>
           </ul>
@@ -25,29 +25,44 @@
 </template>
 
 <script>
-import axios from 'axios'
+  import axios from 'axios'
 
 export default {
-  async asyncData ({ params, error, payload }) {
-    if (payload) return {recipe: payload}
-    else return this.$axios.$get('/functions-build/allRecipes')
+  data: function() {
+    return {
+        recipe: {},
+    }
+  },
+  created: function() {
+    const routeId = this._routerRoot._route.params.id
+     this.$axios.get(`https://fast-reef-73314.herokuapp.com/recipes`)
+    .then(res => {
+      this.recipe = res.data.find(recipe => recipe.id === routeId)
+    })
+    .catch(err => {
+        console.log(err)
+        return this.$nuxt.error({statusCode: 404, message: err.message})
+    })
   },
   methods: {
-    crossItOut: function(index) {
-      const refDirection = this.$refs;
-      const direction = this.$refs.direction[index];
+    crossItOutDir: function(index) {
+      const direction = this.$refs.direction[index]
       direction.style.textDecoration === "line-through" ?
       direction.style.textDecoration = "none" :
       direction.style.textDecoration = "line-through";
     },
+    crossItOutIng: function(index) {
+      const ingredient = this.$refs.ingredient[index]
+      ingredient.style.textDecoration === "line-through" ?
+      ingredient.style.textDecoration = "none" :
+      ingredient.style.textDecoration = "line-through";
+    },
     logDate: function() {
-      console.log(masterRecipeList);
       const currentRecipe = this.recipe;
       const jsonToday = new Date().toJSON();
       const justTheDate = jsonToday.slice(0, 10);
       currentRecipe.lastEaten = justTheDate;
       currentRecipe.timesEaten++;
-      masterRecipeList.filter(item => item.id !== currentRecipe.id).push(currentRecipe);
     },
     toHumanDate: function(date) {
       try {
@@ -89,9 +104,6 @@ export default {
     justify-items: center;
     width: 80vw;
     margin: 20px 0;
-    border: 2px solid black;
-    border-radius: 10px;
-    background: white;
   }
 
   .directions {

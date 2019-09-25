@@ -1,11 +1,20 @@
 const pkg = require('./package');
 const axios = require('axios');
-require('dotenv').config();
+
+let dynamicRoutes = () => {
+  return axios.get('https://fast-reef-73314.herokuapp.com/recipes')
+  .then(res => {
+    return res.data.map(recipe => {
+      return {
+        route: `/recipes/ + ${recipe.id}`
+      }
+    })
+  })
+}
 
 module.exports = {
 
   env: {
-    // baseUrl: process.env.API_URL || 'http://localhost:3000',
   },
 
   mode: 'universal',
@@ -28,7 +37,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#f1b4b4' },
 
   /*
   ** Global CSS
@@ -71,8 +80,6 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-    // baseURL: prod ? 'https://whats-for-dinner.netlify.com' : 'http://localhost:3000'
   },
 
   /*
@@ -86,22 +93,6 @@ module.exports = {
     }
   },
   generate: {
-    routes: function (callback) {
-      axios.get(`https://whats-for-dinner.netlify.com/.netlify/functions-build/allRecipes`)
-      .then((res) => {
-        console.log(res);
-        return res.map(recipe => {
-          console.log(recipe)
-          return {
-            route: '/recipes/' + recipe.id,
-            payload: recipe
-          }
-        })
-      })
-      .catch(e => {console.log(e)})
-    }
+    routes: dynamicRoutes
   }
-  // serverMiddleware: [
-  //   {path: '/api', handler: '~/api/index.js'}
-  // ]
 }
