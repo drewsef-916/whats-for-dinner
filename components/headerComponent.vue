@@ -27,7 +27,6 @@ import axios from 'axios';
 import navAbout from '~/components/navAbout.vue';
 import navSearch from '~/components/navSearch.vue';
 import navCalendar from '~/components/navCalendar.vue';
-import axios from 'axios'
 
 export default {
     components: {
