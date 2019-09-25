@@ -6,7 +6,7 @@
           <ul class="ingredients">
             <h5>Ingredients</h5>
             <hr>
-            <li v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.index" @click="crossItOutIng(index)" ref="ingredient">
+            <li v-for="(ingredient, index) in recipe.ingredients" v-bind:key="ingredient.index" @click="crossItOutIng(index)" ref="ingredient">
               {{ingredient}}
             </li>
           </ul>

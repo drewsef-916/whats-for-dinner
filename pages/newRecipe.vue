@@ -68,6 +68,7 @@ export default {
                 directions: this.directions
             })
             .then(res => {
+                console.log(res)
                 this.$router.push('/');
             })
             .catch(err => {
@@ -167,5 +168,8 @@ export default {
     .preview ul {
         margin: 0;
         padding: 0;
+    }
+    #name, #ingredient, #direction {
+        font-family: 'Work Sans', sans-serif;
     }
 </style>

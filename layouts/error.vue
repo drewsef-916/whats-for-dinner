@@ -52,6 +52,6 @@ export default {
   .error-text {
     margin: 0;
     font-family: cursive;
-    font-size: 7rem;
+    font-size: 12rem;
   }
 </style>
