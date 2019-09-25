@@ -49,7 +49,6 @@ export default {
             (error) => console.log(error);
         }
     },
-<<<<<<< HEAD
     created() {
         this.$axios.get('https://fast-reef-73314.herokuapp.com/recipes')
         .then(res => {
@@ -59,8 +58,6 @@ export default {
             console.log(err)
         })
     }
-=======
->>>>>>> master
 }
 </script>
 

@@ -25,7 +25,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
   import axios from 'axios'
 
 export default {
@@ -48,19 +47,6 @@ export default {
   methods: {
     crossItOutDir: function(index) {
       const direction = this.$refs.direction[index]
-=======
-import axios from 'axios'
-
-export default {
-  async asyncData ({ params, error, payload }) {
-    if (payload) return {recipe: payload}
-    else return this.$axios.$get('/functions-build/allRecipes')
-  },
-  methods: {
-    crossItOut: function(index) {
-      const refDirection = this.$refs;
-      const direction = this.$refs.direction[index];
->>>>>>> master
       direction.style.textDecoration === "line-through" ?
       direction.style.textDecoration = "none" :
       direction.style.textDecoration = "line-through";
