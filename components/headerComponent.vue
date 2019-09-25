@@ -27,10 +27,7 @@ import axios from 'axios';
 import navAbout from '~/components/navAbout.vue';
 import navSearch from '~/components/navSearch.vue';
 import navCalendar from '~/components/navCalendar.vue';
-<<<<<<< HEAD
 import axios from 'axios'
-=======
->>>>>>> master
 
 export default {
     components: {
