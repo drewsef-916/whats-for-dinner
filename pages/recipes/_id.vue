@@ -25,18 +25,20 @@
 </template>
 
 <script>
-  import axios from 'axios'
 
 export default {
   computed: {
     recipe() {
-      const routeId = $nuxt._route.params.id
-      this.$store.commit({
-        type: 'setRecipe',
-        recipeId: routeId
-      })
       return this.$store.state.recipe
     }
+  },
+  created() {
+    console.log($nuxt)
+    const routeId = $nuxt._route.params.id
+    this.$store.commit({
+      type: 'setRecipe',
+      recipeId: routeId
+    })
   },
   methods: {
     crossItOutDir: function(index) {
