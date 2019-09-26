@@ -34,25 +34,11 @@ export default {
         navSearch,
         navCalendar
     },
-    data: function() {
-        return { recipes: [] }
-    },
-    created: async function() {
-        try {
-            const recipeList = await this.$axios.$get(`https://whats-for-dinner.netlify.com/.netlify/functions-build/allRecipes`);
-            this.recipes = recipeList;
-        } catch {
-            (error) => console.log(error);
-        }
+    computed: {
+
     },
     created() {
-        this.$axios.get('https://fast-reef-73314.herokuapp.com/recipes')
-        .then(res => {
-            this.recipes = res.data
-        })
-        .catch(err => {
-            console.log(err)
-        })
+
     }
 }
 </script>

@@ -1,12 +1,27 @@
 import axios from 'axios'
 
 export const state = () => ({
-  recipes: []
+  recipes: [],
+  recipe: {
+    id: '',
+    name: '',
+    ingredients: [],
+    directions: []
+  }
 })
 
 export const mutations = {
   setRecipes(state, payload) {
     state.recipes = payload.list
+  },
+  setRecipe(state, payload) {
+    const foundRecipe = state.recipes.find(recipe => {
+      return recipe.id === payload.recipeId
+    })
+    state.recipe.id = foundRecipe.id
+    state.recipe.name = foundRecipe.name
+    state.recipe.ingredients = foundRecipe.ingredients
+    state.recipe.directions = foundRecipe.directions
   }
 }
 

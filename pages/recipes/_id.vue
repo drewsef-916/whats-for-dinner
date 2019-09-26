@@ -29,10 +29,14 @@
 
 export default {
   computed: {
-
-  },
-  created() {
-    console.log($nuxt._route.params.id)
+    recipe() {
+      const routeId = $nuxt._route.params.id
+      this.$store.commit({
+        type: 'setRecipe',
+        recipeId: routeId
+      })
+      return this.$store.state.recipe
+    }
   },
   methods: {
     crossItOutDir: function(index) {
