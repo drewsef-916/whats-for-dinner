@@ -1,13 +1,19 @@
-<template>  
+<template>
   <div>
     <fa icon="search" class="icon has-menu" @click="navMenu"/>
     <div class="search-menu menu-toggle">
         <input type="text" placeholder="Find a recipe">
     </div>
-    <aside class="searchbox">
+    <aside class="searchbox" ref="searchBox">
       <input type="text" placeholder="find a recipe..." @keyup="findMatches">
       <fa icon="times-circle" class="icon close" @click="buttonClose"/>
-      <ul class="recipe-matches"></ul>
+      <ul class="recipe-matches">
+        <li v-for="recipe in matchedRecipes" v-bind:key="recipe.id">
+          <nuxt-link :to="{name: 'recipes-id', params: {id: recipe.id}}">
+            <p @click="hideSearchBox">{{recipe.name}}</p>
+          </nuxt-link>
+        </li>
+      </ul>
     </aside>
   </div>
 </template>
@@ -15,6 +21,11 @@
 <script>
 export default {
   props: ['recipeList'],
+  data: function() {
+    return {
+      matchedRecipes: []
+    }
+  },
   methods: {
     navMenu: function() {
       const searchBox = this.$el.lastChild;
@@ -23,23 +34,20 @@ export default {
     buttonClose: function() {
       this.$el.lastChild.style.display = "none";
     },
+    hideSearchBox: function() {
+      this.$el.lastChild.firstChild.value = ''
+      this.matchedRecipes = []
+      this.$refs.searchBox.style.display = "none"
+    },
     findMatches: function() {
       let matchWord = this.$el.lastChild.firstChild.value;
       const recipeList = this.$props.recipeList;
       const suggestions = this.$el.lastChild.lastChild;
-      let filteredList = recipeList.filter(recipe => {
+      this.matchedRecipes = recipeList.filter(recipe => {
         const regex = new RegExp(matchWord, 'gi');
         return recipe.name.match(regex)
       })
-      if (!matchWord.length) filteredList = [];
-      const html = filteredList.map(recipe => {
-        return `
-        <a href="/recipes/${recipe.id}">
-            <li>${recipe.name}</li>
-        </a>
-        `
-      }).join('')
-      suggestions.innerHTML = html;
+      if (!matchWord.length) this.matchedRecipes = [];
     },
   }
 }
@@ -84,14 +92,15 @@ export default {
     padding-left: 10px;
     margin-top: 30px;
   }
-  .recipe-matches li {
+  .recipe-matches p {
     font-size: 1.5rem;
     padding: 10px 0;
+    margin: 0;
     color: #494747;
     background-color: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid black;
   }
-  .recipe-matches a {
-    text-decoration: none;
+  .recipe-matches a, .recipe-matches li {
+    padding: 0;
   }
 </style>
