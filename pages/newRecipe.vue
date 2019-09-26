@@ -114,10 +114,8 @@ export default {
         font-size: 1rem;
     }
     .page-wrapper {
-        background-color: white;
-        background-attachment: fixed;
-        height: 85vh;
-        margin-top: 15vh;
+        background: white;
+        margin-top: 18vh;
     }
     .new-recipe {
         display: grid;

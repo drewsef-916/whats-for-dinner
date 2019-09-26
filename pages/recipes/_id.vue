@@ -25,23 +25,19 @@
 </template>
 
 <script>
-  import axios from 'axios'
 
 export default {
-  data: function() {
-    return {
-        recipe: {},
+  computed: {
+    recipe() {
+      return this.$store.state.recipe
     }
   },
-  created: function() {
-    const routeId = this._routerRoot._route.params.id
-     this.$axios.get(`https://fast-reef-73314.herokuapp.com/recipes`)
-    .then(res => {
-      this.recipe = res.data.find(recipe => recipe.id === routeId)
-    })
-    .catch(err => {
-        console.log(err)
-        return this.$nuxt.error({statusCode: 404, message: err.message})
+  created() {
+    console.log($nuxt)
+    const routeId = $nuxt._route.params.id
+    this.$store.commit({
+      type: 'setRecipe',
+      recipeId: routeId
     })
   },
   methods: {
