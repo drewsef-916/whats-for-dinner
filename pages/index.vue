@@ -26,42 +26,16 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
-
-  data: function() {
-    return {
-      recipes: [],
+  computed: {
+    recipes() {
+      return this.$store.state.recipes
     }
   },
-  methods: {
-    // handleScroll() {
-    //   if (window.scrollY > 100) {
-    //     //make a back to top button
-    //   }
-    // }
-  },
-  created: async function() {
-    console.log(this)
-    this.loading = true
-    this.$axios.get('https://fast-reef-73314.herokuapp.com/recipes')
-    .then(res => {
-      this.loading = false
-      this.recipes = res.data
-    })
-    .catch(err => {
-      this.loading = false
-      console.log(err)
-    })
-  },
-  // beforeMount() {
-  //   window.addEventListener('scroll', this.handleScroll)
-  // },
-  // beforeDestroy() {
-  //   window.addEventListener('scroll', this.handleScroll)
-  // },
-
+  created() {
+    this.$store.dispatch('fetchRecipes')
+  }
 }
 </script>
 
