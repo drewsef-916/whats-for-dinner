@@ -19,19 +19,11 @@ export default {
 </script>
 
 <style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
   .container {
-      display: grid;
-      justify-content: center;
-      text-align: center;
-      margin-top: 15vh;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    margin-top: 15vh;
   }
   .error-nf {
     margin-top: 2vh;
@@ -40,14 +32,15 @@ export default {
     align-items: center;
   }
   .liam {
-    max-width: 30vw;
-    opacity: 0;
-    animation: fade-in ease 2.0s forwards;
+    max-width: 12vw;
+    margin-top: 2rem;
+    /* animation: fade-in ease 2.0s forwards; */
     clip-path: circle();
   }
   .back-home {
     font-family: 'Handlee', cursive;
-    font-size: 1rem;
+    margin-top: 2rem;
+    font-size: 2rem;
   }
   .error-text {
     margin: 0;
