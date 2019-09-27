@@ -23,11 +23,11 @@
 <script>
     export default {
         props: ['recipe'],
-        data: () => {
-            return {
-                isLoading: false
-            }
-        },
+        // data: () => {
+        //     return {
+        //         isLoading: false
+        //     }
+        // },
         mounted() {
             this.$nuxt.$loading.finish()
         }
