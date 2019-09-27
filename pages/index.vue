@@ -2,32 +2,19 @@
   <div class="page-wrapper">
     <main class="recipe-container">
         <div class="recipe" v-for="recipe in recipes" v-bind:key="recipe.id">
-          <nuxt-link :to="{name: 'recipes-id', params: {id: recipe.id}}">
-            <h3>{{recipe.name}}</h3>
-          </nuxt-link>
-
-          <ul class="ingredients">
-            <h5>Ingredients</h5>
-            <hr>
-            <li v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.index">
-              {{ingredient}}
-            </li>
-          </ul>
-          <ul class="directions">
-            <h5>Directions</h5>
-            <hr>
-            <li v-for="direction in recipe.directions" v-bind:key="direction.index">
-              {{direction}}
-            </li>
-          </ul>
+          <recipeComponent :recipe="recipe"></recipeComponent>
         </div>
     </main>
   </div>
 </template>
 
 <script>
+import recipeComponent from '~/components/recipeComponent.vue';
 
 export default {
+  components: {
+    recipeComponent
+  },
   computed: {
     recipes() {
       return this.$store.state.recipes
@@ -35,6 +22,11 @@ export default {
   },
   created() {
     this.$store.dispatch('fetchRecipes')
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+    })
   }
 }
 </script>
@@ -72,17 +64,6 @@ h5 {
     linear-gradient(#f1b4b4, #fff) padding-box,
     linear-gradient(#fff, #f1b4b4) border-box;
 }
-
-.directions {
-  text-align: center;
-  padding: 0;
-}
-
-.ingredients {
-  text-align: center;
-  padding: 0;
-}
-
 .page-title {
   text-align: center;
 }

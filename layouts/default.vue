@@ -12,10 +12,6 @@ export default {
   components: {
     headerComponent
   },
-  // mounted: function() {
-  //   const header = this.$refs.headerComp;
-  //   console.log(header);
-  // }
 }
 </script>
 
