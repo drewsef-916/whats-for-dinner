@@ -26,7 +26,11 @@ export default {
   mounted() {
     this.$nextTick(() => {
       console.log(this.$store.state.recipes)
-      if (! this.$store.state.recipes.length) this.$nuxt.$loading.start()
+      if (! this.$store.state.recipes.length) {
+        setTimeout(() => {
+          this.$nuxt.$loading.start()
+        }, 100)
+      }
       //add a delay in here too so the loading doesn't flash
     })
   }
