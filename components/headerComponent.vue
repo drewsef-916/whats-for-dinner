@@ -7,12 +7,12 @@
         <nuxt-link to="/">
             <img class="logo" src="~/assets/wfd-logo.png"/>
         </nuxt-link>
-        <!-- <navCalendar :recipeList="this.recipes"/> -->
-        <div>
+        <navCalendar :recipeList="this.recipes"/>
+        <!-- <div>
             <nuxt-link to="/converter">
                 <fa icon="exchange-alt" class="icon"/>
             </nuxt-link>
-        </div>
+        </div> -->
         <div>
             <nuxt-link to="/newRecipe">
                 <fa icon="plus" class="icon"/>
