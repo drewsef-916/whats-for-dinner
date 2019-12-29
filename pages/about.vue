@@ -52,4 +52,7 @@ export default {
     h5:nth-of-type(even) {
         background-image: linear-gradient(45deg, #E47373, white);
     }
+    .container {
+        margin: 15vh 1em;
+    }
 </style>

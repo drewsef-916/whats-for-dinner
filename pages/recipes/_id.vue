@@ -33,7 +33,6 @@ export default {
     }
   },
   created() {
-    console.log($nuxt)
     const routeId = $nuxt._route.params.id
     this.$store.commit({
       type: 'setRecipe',
@@ -54,11 +53,11 @@ export default {
       ingredient.style.textDecoration = "line-through";
     },
     logDate: function() {
-      const currentRecipe = this.recipe;
-      const jsonToday = new Date().toJSON();
-      const justTheDate = jsonToday.slice(0, 10);
-      currentRecipe.lastEaten = justTheDate;
-      currentRecipe.timesEaten++;
+      this.$store.dispatch({
+        type: 'updateLastEaten',
+        recipe: this.$store.state.recipe
+      });
+      this.$router.push({ path: '/' })
     },
     toHumanDate: function(date) {
       try {
