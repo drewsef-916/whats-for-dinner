@@ -57,7 +57,7 @@ export default {
         type: 'updateLastEaten',
         recipe: this.$store.state.recipe
       });
-      this.$route.push('/')
+      this.$router.push({ path: '/' })
     },
     toHumanDate: function(date) {
       try {
